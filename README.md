@@ -172,6 +172,14 @@ https://github.com/Divyeshpratap/AVATAR.git
 cd avatar
 ```
 
+### Demo
+
+Run the script using the below command
+
+```bash
+python talkNetLive.py --video_path input/<videoname.mp4/avi> --tmp_dir output/<projectName> --clipped_video_len 50 --talknet_model pretrain_TalkSet.model
+```
+
 ## License
 This repository is private and intended solely for Center for Unified Biometrics and Sensors Lab (University at Buffalo) use. Unauthorized reproduction, distribution, or commercial use of this code is prohibited.
 
