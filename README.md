@@ -83,8 +83,6 @@ AVATAR's processing pipeline is meticulously designed to ensure accurate and eff
 
 ## Architecture
 
-![AVATAR Architecture Diagram](https://your-repo-link/architecture.png) <!-- Replace with your actual architecture diagram URL -->
-
 AVATAR's architecture is modular, ensuring each component handles a specific aspect of the processing pipeline. Below is an overview of the main components:
 
 ### 1. **Input Module**
@@ -163,13 +161,24 @@ AVATAR employs a **Producer-Consumer** model using multi-threading to achieve re
 
 ### Prerequisites
 
-- **Operating System:** Linux or macOS recommended. Windows may work with some adjustments.
 - **Python Version:** Python 3.7 or higher.
 - **CUDA:** (Optional) NVIDIA GPU with CUDA support for accelerated processing.
+
 
 ### Clone the Repository
 
 ```bash
 https://github.com/Divyeshpratap/AVATAR.git
 cd avatar
+```
+
+## License
+This repository is private and intended solely for Center for Unified Biometrics and Sensors Lab (University at Buffalo) use. Unauthorized reproduction, distribution, or commercial use of this code is prohibited.
+
+
+## Acknowledgment
+This project leverages trained ASD model from [TalkNet-ASD](https://github.com/TaoRuijie/TalkNet-ASD) model.
+
+## Contact
+For more information, contact the University at Buffalo.
 
