@@ -17,8 +17,7 @@ from scipy.signal import medfilt
 from moviepy.editor import VideoFileClip
 import glob
 import subprocess
-from facenet_pytorch import MTCNN
-from sort import Sort  # Ensure SORT is installed: pip install sort
+from sort import Sort
 from scipy import signal
 from scipy.io import wavfile
 import math
@@ -28,7 +27,7 @@ from detectors import S3FD
 from datetime import datetime
 import logging  # Added for logging functionality
 from talkNet import talkNet
-import threading  # Added for threading
+import threading
 from tqdm import tqdm  # For progress bar
 import queue  # Added for batch queue
 
@@ -129,12 +128,21 @@ class TalkNetInstance:
             videoFeature.append(face)
 
         videoFeature = np.array(videoFeature)
+        print(f'Audio Feature shape is {audioFeature.shape[0]}, and video Feature shape is {videoFeature.shape[0]}')
+        expected_audio_len = (videoFeature.shape[0] * 100) // 25
+        if audioFeature.shape[0] < expected_audio_len:
+            padding_len = expected_audio_len - audioFeature.shape[0]
+            print(f'padding values at last because padding len found at {padding_len}')
+            last_values = np.tile(audioFeature[-1:], (padding_len, 1))
+            audioFeature = np.vstack((audioFeature, last_values))
+
         length = min((audioFeature.shape[0] // 100), (videoFeature.shape[0] // 25))
         audioFeature = audioFeature[:int(length * 100), :]
         videoFeature = videoFeature[:int(length * 25), :, :]
         allScore = []  # Evaluation use TalkNet 
         for duration in durationSet:
-            batchSize = int(math.ceil(length / duration))
+            # batchSize = int(math.ceil(length / duration))
+            batchSize = int(math.ceil(length / duration)) if length>= 25 else 1
             scores = []
             with torch.no_grad():
                 for i in range(batchSize):
@@ -142,6 +150,11 @@ class TalkNetInstance:
                     end_a = (i + 1) * duration * 100
                     start_v = i * duration * 25
                     end_v = (i + 1) * duration * 25
+                    # start_a = i * duration * 80
+                    # end_a = (i + 1) * duration * 80
+                    # start_v = i * duration * 20
+                    # end_v = (i + 1) * duration * 20
+
 
                     inputA = torch.FloatTensor(audioFeature[start_a:end_a, :]).unsqueeze(0).cuda()
                     inputV = torch.FloatTensor(videoFeature[start_v:end_v, :, :]).unsqueeze(0).cuda()
@@ -151,7 +164,7 @@ class TalkNetInstance:
                     embedA, embedV = self.talkNet.model.forward_cross_attention(embedA, embedV)
                     out = self.talkNet.model.forward_audio_visual_backend(embedA, embedV)
                     score = self.talkNet.lossAV.forward(out, labels=None)
-                    print(f'score values is {score}')
+                    # print(f'score values is {score}')
                     if isinstance(score, torch.Tensor):
                         score = score.cpu().numpy()
                     scores.extend(score)
@@ -162,7 +175,7 @@ class TalkNetInstance:
         meanScores = np.mean(allScore, axis=0)
         roundedScores = np.round(meanScores, 1).astype(float)
         self.logger.debug("Aggregation of confidence scores completed.")
-
+        print(f'rounded scores value finally sent for this batch is {roundedScores}, and length is {len(roundedScores)}')
         return roundedScores
 
     def loadParameters(self, path):
@@ -640,13 +653,20 @@ class POCTrackGenerator:
 
                         # Annotate and collect frames with TalkNet results
                         annotated_batch = []
+                        temp_score = []
                         if talkNet_results:
                             for i in range(len(track_frames_numbers)):
                                 current_frame_number_sync = track_frames_numbers[i]
                                 frame_image = track_frames[i].copy()
                                 bbox = track_bboxes[i]
-                                conf_score = talkNet_results['frame_confidences'][i] if i < len(talkNet_results['frame_confidences']) else 0.0
-
+                                # conf_score = talkNet_results['frame_confidences'][i] if i < len(talkNet_results['frame_confidences']) else 0.0
+                                if i < len(talkNet_results['frame_confidences']):
+                                    conf_score = talkNet_results['frame_confidences'][i]
+                                    temp_score.append(conf_score)
+                                else:
+                                    conf_score = 0.0
+                                    print(f'****************conf_score set to 0.0 for index {i}*****************')
+                                    temp_score.append(conf_score)
                                 # Prepare detection data
                                 detection_data = {
                                     'track_number': track_id,
@@ -657,7 +677,7 @@ class POCTrackGenerator:
                                 # Annotate the frame
                                 annotated_frame = self.annotate_and_save_frames(current_frame_number_sync, frame_image, [detection_data])
                                 annotated_batch.append(annotated_frame)
-
+                        print(f'confidence scores sent for annotation this batch is {temp_score}')
                         # Enqueue the annotated batch for display
                         if annotated_batch:
                             self.batch_queue.put(annotated_batch)

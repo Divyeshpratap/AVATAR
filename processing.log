@@ -1,0 +1,168 @@
+2024-10-18 13:41:17,123 - POCTrackGeneratorLogger - DEBUG - Video FPS: 25.0, Total Frames: 750, Frame Size: 1920x960
+2024-10-18 13:41:17,123 - POCTrackGeneratorLogger - DEBUG - Initialized batch_queue for real-time visualization.
+2024-10-18 13:41:17,123 - POCTrackGeneratorLogger - INFO - Audio file already exists at output/mb25live\audio.wav.
+2024-10-18 13:41:18,536 - POCTrackGeneratorLogger - INFO - Using GPU for processing
+2024-10-18 13:41:19,007 - POCTrackGeneratorLogger - INFO - TalkNet model loaded from pretrain_TalkSet.model.
+2024-10-18 13:41:19,007 - POCTrackGeneratorLogger - INFO - TalkNet model loaded.
+2024-10-18 13:41:19,007 - POCTrackGeneratorLogger - DEBUG - Display thread started.
+2024-10-18 13:41:19,007 - POCTrackGeneratorLogger - INFO - Starting Optimized Batch Processing with Single TalkNet Initialization...
+2024-10-18 13:41:19,058 - POCTrackGeneratorLogger - DEBUG - Display window 'Annotated Video' created and resized.
+2024-10-18 13:41:21,826 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:21,905 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:21,984 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:22,070 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:22,155 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:22,235 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:22,319 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:22,393 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:22,469 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:22,534 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:22,611 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:22,677 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:22,756 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:22,840 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:22,913 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:23,008 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:23,087 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:23,166 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:23,246 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:23,326 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:23,326 - POCTrackGeneratorLogger - INFO - Running TalkNet Evaluation for Track 1...
+2024-10-18 13:41:23,326 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-10-18 13:41:23,364 - POCTrackGeneratorLogger - DEBUG - Track 1 - Start time: 0.0s, End time: 0.8s
+2024-10-18 13:41:23,364 - POCTrackGeneratorLogger - DEBUG - Audio segment path: output/mb25live\track_1_subtrack_1\audio.wav
+2024-10-18 13:41:23,447 - POCTrackGeneratorLogger - DEBUG - Extracted audio segment for Track 1.
+2024-10-18 13:41:23,486 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/mb25live\temp_track_1_1\cropped_frames
+2024-10-18 13:41:23,913 - POCTrackGeneratorLogger - ERROR - Error during TalkNet evaluation for Track 1: Calculated padded input size per channel: (19 x 6). Kernel size: (7 x 7). Kernel size can't be greater than actual input size
+2024-10-18 13:41:23,913 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.466 seconds (466.215 milliseconds)
+2024-10-18 13:41:24,068 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:24,142 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:24,211 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:24,288 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:24,359 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:24,432 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:24,507 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:24,590 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:24,663 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:24,735 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:24,805 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:24,878 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:24,949 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:25,013 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:25,097 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:25,165 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:25,232 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:25,311 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:25,390 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:25,461 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:25,461 - POCTrackGeneratorLogger - INFO - Running TalkNet Evaluation for Track 1...
+2024-10-18 13:41:25,461 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-10-18 13:41:25,502 - POCTrackGeneratorLogger - DEBUG - Track 1 - Start time: 0.8s, End time: 1.6s
+2024-10-18 13:41:25,502 - POCTrackGeneratorLogger - DEBUG - Audio segment path: output/mb25live\track_1_subtrack_2\audio.wav
+2024-10-18 13:41:25,580 - POCTrackGeneratorLogger - DEBUG - Extracted audio segment for Track 1.
+2024-10-18 13:41:25,612 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/mb25live\temp_track_1_2\cropped_frames
+2024-10-18 13:41:25,710 - POCTrackGeneratorLogger - ERROR - Error during TalkNet evaluation for Track 1: Calculated padded input size per channel: (19 x 6). Kernel size: (7 x 7). Kernel size can't be greater than actual input size
+2024-10-18 13:41:25,710 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.130 seconds (129.890 milliseconds)
+2024-10-18 13:41:25,864 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:25,927 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:26,008 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:26,078 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:26,147 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:26,216 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:26,286 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:26,358 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:26,426 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:26,494 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:26,566 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:26,633 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:26,707 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:26,774 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:26,847 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:26,916 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:26,988 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:27,057 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:27,120 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:27,203 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:27,205 - POCTrackGeneratorLogger - INFO - Running TalkNet Evaluation for Track 1...
+2024-10-18 13:41:27,205 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-10-18 13:41:27,237 - POCTrackGeneratorLogger - DEBUG - Track 1 - Start time: 1.6s, End time: 2.4s
+2024-10-18 13:41:27,237 - POCTrackGeneratorLogger - DEBUG - Audio segment path: output/mb25live\track_1_subtrack_3\audio.wav
+2024-10-18 13:41:27,310 - POCTrackGeneratorLogger - DEBUG - Extracted audio segment for Track 1.
+2024-10-18 13:41:27,342 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/mb25live\temp_track_1_3\cropped_frames
+2024-10-18 13:41:27,440 - POCTrackGeneratorLogger - ERROR - Error during TalkNet evaluation for Track 1: Calculated padded input size per channel: (19 x 6). Kernel size: (7 x 7). Kernel size can't be greater than actual input size
+2024-10-18 13:41:27,440 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.129 seconds (129.123 milliseconds)
+2024-10-18 13:41:27,628 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:27,707 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:27,788 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:27,849 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:27,928 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:27,994 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:28,070 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:28,133 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:28,213 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:28,277 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:28,356 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:28,435 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:28,498 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:28,578 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:28,641 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:28,720 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:28,783 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:28,862 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:28,926 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:28,990 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:29,006 - POCTrackGeneratorLogger - INFO - Running TalkNet Evaluation for Track 1...
+2024-10-18 13:41:29,006 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-10-18 13:41:29,022 - POCTrackGeneratorLogger - DEBUG - Track 1 - Start time: 2.4s, End time: 3.2s
+2024-10-18 13:41:29,038 - POCTrackGeneratorLogger - DEBUG - Audio segment path: output/mb25live\track_1_subtrack_4\audio.wav
+2024-10-18 13:41:29,101 - POCTrackGeneratorLogger - DEBUG - Extracted audio segment for Track 1.
+2024-10-18 13:41:29,148 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/mb25live\temp_track_1_4\cropped_frames
+2024-10-18 13:41:29,245 - POCTrackGeneratorLogger - ERROR - Error during TalkNet evaluation for Track 1: Calculated padded input size per channel: (19 x 6). Kernel size: (7 x 7). Kernel size can't be greater than actual input size
+2024-10-18 13:41:29,245 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.144 seconds (144.048 milliseconds)
+2024-10-18 13:41:29,401 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:29,480 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:29,543 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:29,622 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:29,686 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:29,770 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:29,842 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:29,906 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:29,987 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:30,059 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:30,127 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:30,200 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:30,272 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:30,331 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:30,411 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:30,490 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:30,553 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:30,632 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:30,710 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:30,773 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:30,773 - POCTrackGeneratorLogger - INFO - Running TalkNet Evaluation for Track 1...
+2024-10-18 13:41:30,773 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-10-18 13:41:30,806 - POCTrackGeneratorLogger - DEBUG - Track 1 - Start time: 3.2s, End time: 4.0s
+2024-10-18 13:41:30,806 - POCTrackGeneratorLogger - DEBUG - Audio segment path: output/mb25live\track_1_subtrack_5\audio.wav
+2024-10-18 13:41:30,884 - POCTrackGeneratorLogger - DEBUG - Extracted audio segment for Track 1.
+2024-10-18 13:41:30,932 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/mb25live\temp_track_1_5\cropped_frames
+2024-10-18 13:41:31,030 - POCTrackGeneratorLogger - ERROR - Error during TalkNet evaluation for Track 1: Calculated padded input size per channel: (19 x 6). Kernel size: (7 x 7). Kernel size can't be greater than actual input size
+2024-10-18 13:41:31,030 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.146 seconds (145.671 milliseconds)
+2024-10-18 13:41:31,202 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:31,281 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:31,361 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:31,432 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:31,504 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:31,581 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:31,647 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:31,726 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:31,804 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:31,867 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:31,947 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:32,026 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:32,108 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:32,186 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:32,248 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:32,326 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:32,402 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-10-18 13:41:32,463 - POCTrackGeneratorLogger - WARNING - Processing interrupted by user.
+2024-10-18 13:41:32,467 - POCTrackGeneratorLogger - INFO - Processing finished.
