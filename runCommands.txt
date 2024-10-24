@@ -1,0 +1,3 @@
+python talknetCamera.py --tmp_dir output/mb25live --clipped_video_len 50 --talknet_model pretrain_TalkSet.model
+
+python talknetMultispeakerLive.py --video_path input/mb25small.mp4 --tmp_dir output/mb25live --clipped_video_len 50 --talknet_model pretrain_TalkSet.model
