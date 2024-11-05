@@ -1,168 +1,1342 @@
-2024-10-18 13:41:17,123 - POCTrackGeneratorLogger - DEBUG - Video FPS: 25.0, Total Frames: 750, Frame Size: 1920x960
-2024-10-18 13:41:17,123 - POCTrackGeneratorLogger - DEBUG - Initialized batch_queue for real-time visualization.
-2024-10-18 13:41:17,123 - POCTrackGeneratorLogger - INFO - Audio file already exists at output/mb25live\audio.wav.
-2024-10-18 13:41:18,536 - POCTrackGeneratorLogger - INFO - Using GPU for processing
-2024-10-18 13:41:19,007 - POCTrackGeneratorLogger - INFO - TalkNet model loaded from pretrain_TalkSet.model.
-2024-10-18 13:41:19,007 - POCTrackGeneratorLogger - INFO - TalkNet model loaded.
-2024-10-18 13:41:19,007 - POCTrackGeneratorLogger - DEBUG - Display thread started.
-2024-10-18 13:41:19,007 - POCTrackGeneratorLogger - INFO - Starting Optimized Batch Processing with Single TalkNet Initialization...
-2024-10-18 13:41:19,058 - POCTrackGeneratorLogger - DEBUG - Display window 'Annotated Video' created and resized.
-2024-10-18 13:41:21,826 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:21,905 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:21,984 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:22,070 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:22,155 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:22,235 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:22,319 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:22,393 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:22,469 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:22,534 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:22,611 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:22,677 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:22,756 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:22,840 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:22,913 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:23,008 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:23,087 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:23,166 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:23,246 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:23,326 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:23,326 - POCTrackGeneratorLogger - INFO - Running TalkNet Evaluation for Track 1...
-2024-10-18 13:41:23,326 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
-2024-10-18 13:41:23,364 - POCTrackGeneratorLogger - DEBUG - Track 1 - Start time: 0.0s, End time: 0.8s
-2024-10-18 13:41:23,364 - POCTrackGeneratorLogger - DEBUG - Audio segment path: output/mb25live\track_1_subtrack_1\audio.wav
-2024-10-18 13:41:23,447 - POCTrackGeneratorLogger - DEBUG - Extracted audio segment for Track 1.
-2024-10-18 13:41:23,486 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/mb25live\temp_track_1_1\cropped_frames
-2024-10-18 13:41:23,913 - POCTrackGeneratorLogger - ERROR - Error during TalkNet evaluation for Track 1: Calculated padded input size per channel: (19 x 6). Kernel size: (7 x 7). Kernel size can't be greater than actual input size
-2024-10-18 13:41:23,913 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.466 seconds (466.215 milliseconds)
-2024-10-18 13:41:24,068 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:24,142 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:24,211 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:24,288 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:24,359 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:24,432 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:24,507 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:24,590 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:24,663 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:24,735 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:24,805 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:24,878 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:24,949 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:25,013 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:25,097 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:25,165 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:25,232 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:25,311 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:25,390 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:25,461 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:25,461 - POCTrackGeneratorLogger - INFO - Running TalkNet Evaluation for Track 1...
-2024-10-18 13:41:25,461 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
-2024-10-18 13:41:25,502 - POCTrackGeneratorLogger - DEBUG - Track 1 - Start time: 0.8s, End time: 1.6s
-2024-10-18 13:41:25,502 - POCTrackGeneratorLogger - DEBUG - Audio segment path: output/mb25live\track_1_subtrack_2\audio.wav
-2024-10-18 13:41:25,580 - POCTrackGeneratorLogger - DEBUG - Extracted audio segment for Track 1.
-2024-10-18 13:41:25,612 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/mb25live\temp_track_1_2\cropped_frames
-2024-10-18 13:41:25,710 - POCTrackGeneratorLogger - ERROR - Error during TalkNet evaluation for Track 1: Calculated padded input size per channel: (19 x 6). Kernel size: (7 x 7). Kernel size can't be greater than actual input size
-2024-10-18 13:41:25,710 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.130 seconds (129.890 milliseconds)
-2024-10-18 13:41:25,864 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:25,927 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:26,008 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:26,078 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:26,147 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:26,216 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:26,286 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:26,358 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:26,426 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:26,494 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:26,566 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:26,633 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:26,707 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:26,774 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:26,847 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:26,916 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:26,988 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:27,057 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:27,120 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:27,203 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:27,205 - POCTrackGeneratorLogger - INFO - Running TalkNet Evaluation for Track 1...
-2024-10-18 13:41:27,205 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
-2024-10-18 13:41:27,237 - POCTrackGeneratorLogger - DEBUG - Track 1 - Start time: 1.6s, End time: 2.4s
-2024-10-18 13:41:27,237 - POCTrackGeneratorLogger - DEBUG - Audio segment path: output/mb25live\track_1_subtrack_3\audio.wav
-2024-10-18 13:41:27,310 - POCTrackGeneratorLogger - DEBUG - Extracted audio segment for Track 1.
-2024-10-18 13:41:27,342 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/mb25live\temp_track_1_3\cropped_frames
-2024-10-18 13:41:27,440 - POCTrackGeneratorLogger - ERROR - Error during TalkNet evaluation for Track 1: Calculated padded input size per channel: (19 x 6). Kernel size: (7 x 7). Kernel size can't be greater than actual input size
-2024-10-18 13:41:27,440 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.129 seconds (129.123 milliseconds)
-2024-10-18 13:41:27,628 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:27,707 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:27,788 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:27,849 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:27,928 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:27,994 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:28,070 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:28,133 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:28,213 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:28,277 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:28,356 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:28,435 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:28,498 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:28,578 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:28,641 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:28,720 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:28,783 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:28,862 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:28,926 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:28,990 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:29,006 - POCTrackGeneratorLogger - INFO - Running TalkNet Evaluation for Track 1...
-2024-10-18 13:41:29,006 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
-2024-10-18 13:41:29,022 - POCTrackGeneratorLogger - DEBUG - Track 1 - Start time: 2.4s, End time: 3.2s
-2024-10-18 13:41:29,038 - POCTrackGeneratorLogger - DEBUG - Audio segment path: output/mb25live\track_1_subtrack_4\audio.wav
-2024-10-18 13:41:29,101 - POCTrackGeneratorLogger - DEBUG - Extracted audio segment for Track 1.
-2024-10-18 13:41:29,148 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/mb25live\temp_track_1_4\cropped_frames
-2024-10-18 13:41:29,245 - POCTrackGeneratorLogger - ERROR - Error during TalkNet evaluation for Track 1: Calculated padded input size per channel: (19 x 6). Kernel size: (7 x 7). Kernel size can't be greater than actual input size
-2024-10-18 13:41:29,245 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.144 seconds (144.048 milliseconds)
-2024-10-18 13:41:29,401 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:29,480 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:29,543 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:29,622 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:29,686 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:29,770 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:29,842 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:29,906 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:29,987 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:30,059 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:30,127 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:30,200 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:30,272 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:30,331 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:30,411 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:30,490 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:30,553 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:30,632 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:30,710 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:30,773 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:30,773 - POCTrackGeneratorLogger - INFO - Running TalkNet Evaluation for Track 1...
-2024-10-18 13:41:30,773 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
-2024-10-18 13:41:30,806 - POCTrackGeneratorLogger - DEBUG - Track 1 - Start time: 3.2s, End time: 4.0s
-2024-10-18 13:41:30,806 - POCTrackGeneratorLogger - DEBUG - Audio segment path: output/mb25live\track_1_subtrack_5\audio.wav
-2024-10-18 13:41:30,884 - POCTrackGeneratorLogger - DEBUG - Extracted audio segment for Track 1.
-2024-10-18 13:41:30,932 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/mb25live\temp_track_1_5\cropped_frames
-2024-10-18 13:41:31,030 - POCTrackGeneratorLogger - ERROR - Error during TalkNet evaluation for Track 1: Calculated padded input size per channel: (19 x 6). Kernel size: (7 x 7). Kernel size can't be greater than actual input size
-2024-10-18 13:41:31,030 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.146 seconds (145.671 milliseconds)
-2024-10-18 13:41:31,202 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:31,281 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:31,361 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:31,432 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:31,504 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:31,581 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:31,647 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:31,726 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:31,804 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:31,867 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:31,947 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:32,026 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:32,108 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:32,186 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:32,248 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:32,326 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:32,402 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
-2024-10-18 13:41:32,463 - POCTrackGeneratorLogger - WARNING - Processing interrupted by user.
-2024-10-18 13:41:32,467 - POCTrackGeneratorLogger - INFO - Processing finished.
+2024-11-04 20:48:52,647 - POCTrackGeneratorLogger - DEBUG - Camera FPS: 30.0, Frame Size: 640x480
+2024-11-04 20:48:52,648 - POCTrackGeneratorLogger - DEBUG - Initialized processing_queue and batch_queue for real-time visualization.
+2024-11-04 20:48:52,648 - POCTrackGeneratorLogger - INFO - Using GPU for processing
+2024-11-04 20:48:54,219 - POCTrackGeneratorLogger - DEBUG - Display thread started.
+2024-11-04 20:48:54,252 - POCTrackGeneratorLogger - DEBUG - Display window 'Annotated Video' created and resized.
+2024-11-04 20:48:54,256 - POCTrackGeneratorLogger - INFO - Audio stream opened.
+2024-11-04 20:48:54,256 - POCTrackGeneratorLogger - DEBUG - Processing thread started.
+2024-11-04 20:48:58,786 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,793 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,803 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,813 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,822 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,832 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,842 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,855 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,864 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,871 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,878 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,885 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,893 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,900 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,907 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,914 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,921 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,928 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,934 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,942 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,948 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,955 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,962 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,969 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,976 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,983 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,990 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:58,996 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,003 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,010 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,017 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,025 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,031 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,038 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,045 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,052 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,059 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,066 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,073 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,080 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,086 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,093 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,100 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,107 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,114 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,121 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,128 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,135 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,142 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,149 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,156 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,163 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,170 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,177 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,184 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,191 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,198 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,205 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,212 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,219 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,219 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:48:59,241 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 1 to output/cameraThreading30fps60len4/track_1_subtrack_1/audio.wav.
+2024-11-04 20:48:59,278 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_1_1/cropped_frames
+2024-11-04 20:48:59,410 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:48:59,411 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.169 seconds (169.285 milliseconds)
+2024-11-04 20:48:59,414 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:48:59,436 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 2 to output/cameraThreading30fps60len4/track_2_subtrack_1/audio.wav.
+2024-11-04 20:48:59,470 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_2_1/cropped_frames
+2024-11-04 20:48:59,560 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:48:59,560 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.124 seconds (124.471 milliseconds)
+2024-11-04 20:48:59,564 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 1.
+2024-11-04 20:48:59,565 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 2.
+2024-11-04 20:48:59,567 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 3.
+2024-11-04 20:48:59,568 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 4.
+2024-11-04 20:48:59,569 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 5.
+2024-11-04 20:48:59,570 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 6.
+2024-11-04 20:48:59,571 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 7.
+2024-11-04 20:48:59,573 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 8.
+2024-11-04 20:48:59,574 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 9.
+2024-11-04 20:48:59,575 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 10.
+2024-11-04 20:48:59,576 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 11.
+2024-11-04 20:48:59,577 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 12.
+2024-11-04 20:48:59,578 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 13.
+2024-11-04 20:48:59,580 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 14.
+2024-11-04 20:48:59,581 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 15.
+2024-11-04 20:48:59,582 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 16.
+2024-11-04 20:48:59,583 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 17.
+2024-11-04 20:48:59,584 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 18.
+2024-11-04 20:48:59,585 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 19.
+2024-11-04 20:48:59,587 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 20.
+2024-11-04 20:48:59,588 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 21.
+2024-11-04 20:48:59,589 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 22.
+2024-11-04 20:48:59,590 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 23.
+2024-11-04 20:48:59,591 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 24.
+2024-11-04 20:48:59,592 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 25.
+2024-11-04 20:48:59,594 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 26.
+2024-11-04 20:48:59,595 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 27.
+2024-11-04 20:48:59,596 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 28.
+2024-11-04 20:48:59,597 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 29.
+2024-11-04 20:48:59,598 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 30.
+2024-11-04 20:48:59,599 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 31.
+2024-11-04 20:48:59,601 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 32.
+2024-11-04 20:48:59,602 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 33.
+2024-11-04 20:48:59,603 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 34.
+2024-11-04 20:48:59,604 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 35.
+2024-11-04 20:48:59,605 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 36.
+2024-11-04 20:48:59,606 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 37.
+2024-11-04 20:48:59,608 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 38.
+2024-11-04 20:48:59,609 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 39.
+2024-11-04 20:48:59,610 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 40.
+2024-11-04 20:48:59,611 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 41.
+2024-11-04 20:48:59,612 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 42.
+2024-11-04 20:48:59,614 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 43.
+2024-11-04 20:48:59,615 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 44.
+2024-11-04 20:48:59,616 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 45.
+2024-11-04 20:48:59,617 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 46.
+2024-11-04 20:48:59,618 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 47.
+2024-11-04 20:48:59,619 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 48.
+2024-11-04 20:48:59,621 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 49.
+2024-11-04 20:48:59,622 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 50.
+2024-11-04 20:48:59,623 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 51.
+2024-11-04 20:48:59,624 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 52.
+2024-11-04 20:48:59,625 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 53.
+2024-11-04 20:48:59,627 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 54.
+2024-11-04 20:48:59,628 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 55.
+2024-11-04 20:48:59,629 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 56.
+2024-11-04 20:48:59,630 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 57.
+2024-11-04 20:48:59,631 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 58.
+2024-11-04 20:48:59,633 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 59.
+2024-11-04 20:48:59,634 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 60.
+2024-11-04 20:48:59,634 - POCTrackGeneratorLogger - DEBUG - Enqueued a batch of 60 frames.
+2024-11-04 20:48:59,634 - POCTrackGeneratorLogger - DEBUG - Display thread received a batch of 60 frames.
+2024-11-04 20:48:59,705 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,712 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,719 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,726 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,733 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,742 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,749 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,756 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,763 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,770 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,778 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,784 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,791 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,798 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,806 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,814 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,821 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,829 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,836 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,843 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,850 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,857 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,863 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,871 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,880 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,887 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,895 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,902 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,909 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,917 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,924 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,931 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,938 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,945 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,952 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,960 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,967 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,974 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,981 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,988 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:48:59,996 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,002 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,009 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,016 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,023 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,030 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,037 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,044 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,051 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,057 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,064 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,071 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,078 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,085 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,092 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,098 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,105 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,112 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,119 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,127 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:00,127 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:49:00,131 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 1 to output/cameraThreading30fps60len4/track_1_subtrack_2/audio.wav.
+2024-11-04 20:49:00,173 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_1_2/cropped_frames
+2024-11-04 20:49:00,279 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:49:00,279 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.148 seconds (148.010 milliseconds)
+2024-11-04 20:49:00,282 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:49:00,285 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 2 to output/cameraThreading30fps60len4/track_2_subtrack_2/audio.wav.
+2024-11-04 20:49:00,325 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_2_2/cropped_frames
+2024-11-04 20:49:00,435 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:49:00,435 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.150 seconds (149.737 milliseconds)
+2024-11-04 20:49:00,439 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 61.
+2024-11-04 20:49:00,441 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 62.
+2024-11-04 20:49:00,442 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 63.
+2024-11-04 20:49:00,443 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 64.
+2024-11-04 20:49:00,444 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 65.
+2024-11-04 20:49:00,445 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 66.
+2024-11-04 20:49:00,446 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 67.
+2024-11-04 20:49:00,447 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 68.
+2024-11-04 20:49:00,449 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 69.
+2024-11-04 20:49:00,450 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 70.
+2024-11-04 20:49:00,451 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 71.
+2024-11-04 20:49:00,452 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 72.
+2024-11-04 20:49:00,453 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 73.
+2024-11-04 20:49:00,454 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 74.
+2024-11-04 20:49:00,456 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 75.
+2024-11-04 20:49:00,457 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 76.
+2024-11-04 20:49:00,458 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 77.
+2024-11-04 20:49:00,460 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 78.
+2024-11-04 20:49:00,461 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 79.
+2024-11-04 20:49:00,462 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 80.
+2024-11-04 20:49:00,463 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 81.
+2024-11-04 20:49:00,464 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 82.
+2024-11-04 20:49:00,465 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 83.
+2024-11-04 20:49:00,466 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 84.
+2024-11-04 20:49:00,468 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 85.
+2024-11-04 20:49:00,469 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 86.
+2024-11-04 20:49:00,470 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 87.
+2024-11-04 20:49:00,471 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 88.
+2024-11-04 20:49:00,472 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 89.
+2024-11-04 20:49:00,473 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 90.
+2024-11-04 20:49:00,475 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 91.
+2024-11-04 20:49:00,476 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 92.
+2024-11-04 20:49:00,477 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 93.
+2024-11-04 20:49:00,478 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 94.
+2024-11-04 20:49:00,479 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 95.
+2024-11-04 20:49:00,480 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 96.
+2024-11-04 20:49:00,481 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 97.
+2024-11-04 20:49:00,483 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 98.
+2024-11-04 20:49:00,484 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 99.
+2024-11-04 20:49:00,485 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 100.
+2024-11-04 20:49:00,486 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 101.
+2024-11-04 20:49:00,487 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 102.
+2024-11-04 20:49:00,488 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 103.
+2024-11-04 20:49:00,490 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 104.
+2024-11-04 20:49:00,491 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 105.
+2024-11-04 20:49:00,492 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 106.
+2024-11-04 20:49:00,493 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 107.
+2024-11-04 20:49:00,494 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 108.
+2024-11-04 20:49:00,495 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 109.
+2024-11-04 20:49:00,497 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 110.
+2024-11-04 20:49:00,498 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 111.
+2024-11-04 20:49:00,499 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 112.
+2024-11-04 20:49:00,500 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 113.
+2024-11-04 20:49:00,502 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 114.
+2024-11-04 20:49:00,503 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 115.
+2024-11-04 20:49:00,504 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 116.
+2024-11-04 20:49:00,505 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 117.
+2024-11-04 20:49:00,507 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 118.
+2024-11-04 20:49:00,508 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 119.
+2024-11-04 20:49:00,509 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 120.
+2024-11-04 20:49:00,509 - POCTrackGeneratorLogger - DEBUG - Enqueued a batch of 60 frames.
+2024-11-04 20:49:01,734 - POCTrackGeneratorLogger - DEBUG - Completed displaying a batch of frames.
+2024-11-04 20:49:01,734 - POCTrackGeneratorLogger - DEBUG - Display thread received a batch of 60 frames.
+2024-11-04 20:49:02,245 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,254 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,263 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,272 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,281 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,290 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,297 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,305 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,312 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,319 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,326 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,333 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,340 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,347 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,354 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,361 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,367 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,374 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,381 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,388 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,395 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,402 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,409 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,416 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,423 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,430 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,437 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,443 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,450 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,457 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,464 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,471 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,478 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,485 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,492 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,498 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,505 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,512 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,519 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,526 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,533 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,540 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,547 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,554 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,560 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,567 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,574 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,582 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,589 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,596 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,602 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,609 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,616 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,623 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,630 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,637 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,644 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,651 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,657 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,664 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:02,665 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:49:02,669 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 1 to output/cameraThreading30fps60len4/track_1_subtrack_3/audio.wav.
+2024-11-04 20:49:02,712 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_1_3/cropped_frames
+2024-11-04 20:49:02,821 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:49:02,821 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.152 seconds (152.154 milliseconds)
+2024-11-04 20:49:02,825 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:49:02,829 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 2 to output/cameraThreading30fps60len4/track_2_subtrack_3/audio.wav.
+2024-11-04 20:49:02,862 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_2_3/cropped_frames
+2024-11-04 20:49:02,986 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:49:02,986 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.157 seconds (157.341 milliseconds)
+2024-11-04 20:49:02,994 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 121.
+2024-11-04 20:49:02,996 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 122.
+2024-11-04 20:49:02,997 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 123.
+2024-11-04 20:49:02,998 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 124.
+2024-11-04 20:49:02,999 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 125.
+2024-11-04 20:49:03,001 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 126.
+2024-11-04 20:49:03,002 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 127.
+2024-11-04 20:49:03,003 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 128.
+2024-11-04 20:49:03,004 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 129.
+2024-11-04 20:49:03,005 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 130.
+2024-11-04 20:49:03,007 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 131.
+2024-11-04 20:49:03,008 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 132.
+2024-11-04 20:49:03,009 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 133.
+2024-11-04 20:49:03,010 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 134.
+2024-11-04 20:49:03,011 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 135.
+2024-11-04 20:49:03,012 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 136.
+2024-11-04 20:49:03,014 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 137.
+2024-11-04 20:49:03,015 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 138.
+2024-11-04 20:49:03,016 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 139.
+2024-11-04 20:49:03,017 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 140.
+2024-11-04 20:49:03,018 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 141.
+2024-11-04 20:49:03,019 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 142.
+2024-11-04 20:49:03,021 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 143.
+2024-11-04 20:49:03,022 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 144.
+2024-11-04 20:49:03,023 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 145.
+2024-11-04 20:49:03,024 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 146.
+2024-11-04 20:49:03,025 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 147.
+2024-11-04 20:49:03,026 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 148.
+2024-11-04 20:49:03,027 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 149.
+2024-11-04 20:49:03,029 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 150.
+2024-11-04 20:49:03,030 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 151.
+2024-11-04 20:49:03,031 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 152.
+2024-11-04 20:49:03,032 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 153.
+2024-11-04 20:49:03,033 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 154.
+2024-11-04 20:49:03,034 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 155.
+2024-11-04 20:49:03,036 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 156.
+2024-11-04 20:49:03,037 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 157.
+2024-11-04 20:49:03,038 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 158.
+2024-11-04 20:49:03,039 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 159.
+2024-11-04 20:49:03,040 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 160.
+2024-11-04 20:49:03,042 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 161.
+2024-11-04 20:49:03,043 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 162.
+2024-11-04 20:49:03,044 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 163.
+2024-11-04 20:49:03,045 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 164.
+2024-11-04 20:49:03,046 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 165.
+2024-11-04 20:49:03,047 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 166.
+2024-11-04 20:49:03,049 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 167.
+2024-11-04 20:49:03,050 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 168.
+2024-11-04 20:49:03,051 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 169.
+2024-11-04 20:49:03,052 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 170.
+2024-11-04 20:49:03,053 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 171.
+2024-11-04 20:49:03,054 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 172.
+2024-11-04 20:49:03,056 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 173.
+2024-11-04 20:49:03,057 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 174.
+2024-11-04 20:49:03,058 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 175.
+2024-11-04 20:49:03,059 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 176.
+2024-11-04 20:49:03,061 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 177.
+2024-11-04 20:49:03,062 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 178.
+2024-11-04 20:49:03,063 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 179.
+2024-11-04 20:49:03,064 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 180.
+2024-11-04 20:49:03,064 - POCTrackGeneratorLogger - DEBUG - Enqueued a batch of 60 frames.
+2024-11-04 20:49:03,844 - POCTrackGeneratorLogger - DEBUG - Completed displaying a batch of frames.
+2024-11-04 20:49:03,844 - POCTrackGeneratorLogger - DEBUG - Display thread received a batch of 60 frames.
+2024-11-04 20:49:04,789 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,796 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,803 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,810 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,816 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,823 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,830 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,837 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,843 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,851 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,858 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,865 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,872 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,879 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,886 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,893 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,900 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,907 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,913 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,920 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,927 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,934 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,941 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,947 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,955 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,961 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,968 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,975 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,982 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,989 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:04,996 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,003 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,009 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,016 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,023 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,030 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,037 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,043 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,050 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,057 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,065 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,073 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,080 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,087 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,094 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,101 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,108 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,115 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,122 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,129 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,135 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,143 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,149 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,156 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,163 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,170 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,177 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,185 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,192 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,199 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:05,200 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:49:05,207 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 1 to output/cameraThreading30fps60len4/track_1_subtrack_4/audio.wav.
+2024-11-04 20:49:05,243 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_1_4/cropped_frames
+2024-11-04 20:49:05,364 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:49:05,364 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.157 seconds (156.552 milliseconds)
+2024-11-04 20:49:05,370 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:49:05,376 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 2 to output/cameraThreading30fps60len4/track_2_subtrack_4/audio.wav.
+2024-11-04 20:49:05,408 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_2_4/cropped_frames
+2024-11-04 20:49:05,528 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:49:05,528 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.152 seconds (152.418 milliseconds)
+2024-11-04 20:49:05,536 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 181.
+2024-11-04 20:49:05,538 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 182.
+2024-11-04 20:49:05,539 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 183.
+2024-11-04 20:49:05,540 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 184.
+2024-11-04 20:49:05,541 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 185.
+2024-11-04 20:49:05,542 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 186.
+2024-11-04 20:49:05,544 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 187.
+2024-11-04 20:49:05,545 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 188.
+2024-11-04 20:49:05,546 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 189.
+2024-11-04 20:49:05,547 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 190.
+2024-11-04 20:49:05,548 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 191.
+2024-11-04 20:49:05,550 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 192.
+2024-11-04 20:49:05,551 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 193.
+2024-11-04 20:49:05,552 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 194.
+2024-11-04 20:49:05,553 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 195.
+2024-11-04 20:49:05,554 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 196.
+2024-11-04 20:49:05,556 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 197.
+2024-11-04 20:49:05,557 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 198.
+2024-11-04 20:49:05,558 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 199.
+2024-11-04 20:49:05,559 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 200.
+2024-11-04 20:49:05,560 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 201.
+2024-11-04 20:49:05,561 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 202.
+2024-11-04 20:49:05,563 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 203.
+2024-11-04 20:49:05,564 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 204.
+2024-11-04 20:49:05,565 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 205.
+2024-11-04 20:49:05,566 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 206.
+2024-11-04 20:49:05,568 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 207.
+2024-11-04 20:49:05,569 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 208.
+2024-11-04 20:49:05,570 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 209.
+2024-11-04 20:49:05,571 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 210.
+2024-11-04 20:49:05,572 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 211.
+2024-11-04 20:49:05,574 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 212.
+2024-11-04 20:49:05,575 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 213.
+2024-11-04 20:49:05,576 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 214.
+2024-11-04 20:49:05,577 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 215.
+2024-11-04 20:49:05,578 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 216.
+2024-11-04 20:49:05,579 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 217.
+2024-11-04 20:49:05,581 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 218.
+2024-11-04 20:49:05,582 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 219.
+2024-11-04 20:49:05,583 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 220.
+2024-11-04 20:49:05,584 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 221.
+2024-11-04 20:49:05,585 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 222.
+2024-11-04 20:49:05,587 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 223.
+2024-11-04 20:49:05,588 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 224.
+2024-11-04 20:49:05,589 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 225.
+2024-11-04 20:49:05,590 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 226.
+2024-11-04 20:49:05,591 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 227.
+2024-11-04 20:49:05,593 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 228.
+2024-11-04 20:49:05,594 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 229.
+2024-11-04 20:49:05,595 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 230.
+2024-11-04 20:49:05,596 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 231.
+2024-11-04 20:49:05,597 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 232.
+2024-11-04 20:49:05,599 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 233.
+2024-11-04 20:49:05,600 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 234.
+2024-11-04 20:49:05,601 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 235.
+2024-11-04 20:49:05,602 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 236.
+2024-11-04 20:49:05,603 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 237.
+2024-11-04 20:49:05,605 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 238.
+2024-11-04 20:49:05,606 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 239.
+2024-11-04 20:49:05,607 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 240.
+2024-11-04 20:49:05,607 - POCTrackGeneratorLogger - DEBUG - Enqueued a batch of 60 frames.
+2024-11-04 20:49:05,944 - POCTrackGeneratorLogger - DEBUG - Completed displaying a batch of frames.
+2024-11-04 20:49:05,944 - POCTrackGeneratorLogger - DEBUG - Display thread received a batch of 60 frames.
+2024-11-04 20:49:07,329 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,336 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,343 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,351 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,357 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,364 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,372 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,379 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,386 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,393 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,400 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,407 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,415 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,422 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,429 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,436 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,443 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,451 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,458 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,465 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,472 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,480 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,487 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,495 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,503 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,510 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,517 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,525 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,532 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,540 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,547 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,555 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,562 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,570 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,577 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,584 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,591 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,598 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,606 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,613 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,620 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,627 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,634 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,641 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,649 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-11-04 20:49:07,656 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-11-04 20:49:07,663 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-11-04 20:49:07,670 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-11-04 20:49:07,677 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-11-04 20:49:07,685 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-11-04 20:49:07,691 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-11-04 20:49:07,697 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-11-04 20:49:07,704 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-11-04 20:49:07,711 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-11-04 20:49:07,717 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,725 - POCTrackGeneratorLogger - DEBUG - Detected 1 faces in current frame.
+2024-11-04 20:49:07,731 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,738 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,745 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,752 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:07,754 - POCTrackGeneratorLogger - DEBUG - No detections for frame 241. Saved unannotated frame.
+2024-11-04 20:49:07,755 - POCTrackGeneratorLogger - DEBUG - No detections for frame 242. Saved unannotated frame.
+2024-11-04 20:49:07,756 - POCTrackGeneratorLogger - DEBUG - No detections for frame 243. Saved unannotated frame.
+2024-11-04 20:49:07,757 - POCTrackGeneratorLogger - DEBUG - No detections for frame 244. Saved unannotated frame.
+2024-11-04 20:49:07,758 - POCTrackGeneratorLogger - DEBUG - No detections for frame 245. Saved unannotated frame.
+2024-11-04 20:49:07,759 - POCTrackGeneratorLogger - DEBUG - No detections for frame 246. Saved unannotated frame.
+2024-11-04 20:49:07,760 - POCTrackGeneratorLogger - DEBUG - No detections for frame 247. Saved unannotated frame.
+2024-11-04 20:49:07,761 - POCTrackGeneratorLogger - DEBUG - No detections for frame 248. Saved unannotated frame.
+2024-11-04 20:49:07,762 - POCTrackGeneratorLogger - DEBUG - No detections for frame 249. Saved unannotated frame.
+2024-11-04 20:49:07,763 - POCTrackGeneratorLogger - DEBUG - No detections for frame 250. Saved unannotated frame.
+2024-11-04 20:49:07,764 - POCTrackGeneratorLogger - DEBUG - No detections for frame 251. Saved unannotated frame.
+2024-11-04 20:49:07,765 - POCTrackGeneratorLogger - DEBUG - No detections for frame 252. Saved unannotated frame.
+2024-11-04 20:49:07,766 - POCTrackGeneratorLogger - DEBUG - No detections for frame 253. Saved unannotated frame.
+2024-11-04 20:49:07,767 - POCTrackGeneratorLogger - DEBUG - No detections for frame 254. Saved unannotated frame.
+2024-11-04 20:49:07,768 - POCTrackGeneratorLogger - DEBUG - No detections for frame 255. Saved unannotated frame.
+2024-11-04 20:49:07,769 - POCTrackGeneratorLogger - DEBUG - No detections for frame 256. Saved unannotated frame.
+2024-11-04 20:49:07,770 - POCTrackGeneratorLogger - DEBUG - No detections for frame 257. Saved unannotated frame.
+2024-11-04 20:49:07,771 - POCTrackGeneratorLogger - DEBUG - No detections for frame 258. Saved unannotated frame.
+2024-11-04 20:49:07,772 - POCTrackGeneratorLogger - DEBUG - No detections for frame 259. Saved unannotated frame.
+2024-11-04 20:49:07,773 - POCTrackGeneratorLogger - DEBUG - No detections for frame 260. Saved unannotated frame.
+2024-11-04 20:49:07,774 - POCTrackGeneratorLogger - DEBUG - No detections for frame 261. Saved unannotated frame.
+2024-11-04 20:49:07,775 - POCTrackGeneratorLogger - DEBUG - No detections for frame 262. Saved unannotated frame.
+2024-11-04 20:49:07,776 - POCTrackGeneratorLogger - DEBUG - No detections for frame 263. Saved unannotated frame.
+2024-11-04 20:49:07,777 - POCTrackGeneratorLogger - DEBUG - No detections for frame 264. Saved unannotated frame.
+2024-11-04 20:49:07,778 - POCTrackGeneratorLogger - DEBUG - No detections for frame 265. Saved unannotated frame.
+2024-11-04 20:49:07,779 - POCTrackGeneratorLogger - DEBUG - No detections for frame 266. Saved unannotated frame.
+2024-11-04 20:49:07,780 - POCTrackGeneratorLogger - DEBUG - No detections for frame 267. Saved unannotated frame.
+2024-11-04 20:49:07,781 - POCTrackGeneratorLogger - DEBUG - No detections for frame 268. Saved unannotated frame.
+2024-11-04 20:49:07,782 - POCTrackGeneratorLogger - DEBUG - No detections for frame 269. Saved unannotated frame.
+2024-11-04 20:49:07,783 - POCTrackGeneratorLogger - DEBUG - No detections for frame 270. Saved unannotated frame.
+2024-11-04 20:49:07,784 - POCTrackGeneratorLogger - DEBUG - No detections for frame 271. Saved unannotated frame.
+2024-11-04 20:49:07,785 - POCTrackGeneratorLogger - DEBUG - No detections for frame 272. Saved unannotated frame.
+2024-11-04 20:49:07,786 - POCTrackGeneratorLogger - DEBUG - No detections for frame 273. Saved unannotated frame.
+2024-11-04 20:49:07,787 - POCTrackGeneratorLogger - DEBUG - No detections for frame 274. Saved unannotated frame.
+2024-11-04 20:49:07,788 - POCTrackGeneratorLogger - DEBUG - No detections for frame 275. Saved unannotated frame.
+2024-11-04 20:49:07,789 - POCTrackGeneratorLogger - DEBUG - No detections for frame 276. Saved unannotated frame.
+2024-11-04 20:49:07,790 - POCTrackGeneratorLogger - DEBUG - No detections for frame 277. Saved unannotated frame.
+2024-11-04 20:49:07,791 - POCTrackGeneratorLogger - DEBUG - No detections for frame 278. Saved unannotated frame.
+2024-11-04 20:49:07,792 - POCTrackGeneratorLogger - DEBUG - No detections for frame 279. Saved unannotated frame.
+2024-11-04 20:49:07,793 - POCTrackGeneratorLogger - DEBUG - No detections for frame 280. Saved unannotated frame.
+2024-11-04 20:49:07,794 - POCTrackGeneratorLogger - DEBUG - No detections for frame 281. Saved unannotated frame.
+2024-11-04 20:49:07,795 - POCTrackGeneratorLogger - DEBUG - No detections for frame 282. Saved unannotated frame.
+2024-11-04 20:49:07,796 - POCTrackGeneratorLogger - DEBUG - No detections for frame 283. Saved unannotated frame.
+2024-11-04 20:49:07,797 - POCTrackGeneratorLogger - DEBUG - No detections for frame 284. Saved unannotated frame.
+2024-11-04 20:49:07,798 - POCTrackGeneratorLogger - DEBUG - No detections for frame 285. Saved unannotated frame.
+2024-11-04 20:49:07,799 - POCTrackGeneratorLogger - DEBUG - No detections for frame 286. Saved unannotated frame.
+2024-11-04 20:49:07,800 - POCTrackGeneratorLogger - DEBUG - No detections for frame 287. Saved unannotated frame.
+2024-11-04 20:49:07,801 - POCTrackGeneratorLogger - DEBUG - No detections for frame 288. Saved unannotated frame.
+2024-11-04 20:49:07,802 - POCTrackGeneratorLogger - DEBUG - No detections for frame 289. Saved unannotated frame.
+2024-11-04 20:49:07,803 - POCTrackGeneratorLogger - DEBUG - No detections for frame 290. Saved unannotated frame.
+2024-11-04 20:49:07,804 - POCTrackGeneratorLogger - DEBUG - No detections for frame 291. Saved unannotated frame.
+2024-11-04 20:49:07,805 - POCTrackGeneratorLogger - DEBUG - No detections for frame 292. Saved unannotated frame.
+2024-11-04 20:49:07,806 - POCTrackGeneratorLogger - DEBUG - No detections for frame 293. Saved unannotated frame.
+2024-11-04 20:49:07,807 - POCTrackGeneratorLogger - DEBUG - No detections for frame 294. Saved unannotated frame.
+2024-11-04 20:49:07,808 - POCTrackGeneratorLogger - DEBUG - No detections for frame 295. Saved unannotated frame.
+2024-11-04 20:49:07,809 - POCTrackGeneratorLogger - DEBUG - No detections for frame 296. Saved unannotated frame.
+2024-11-04 20:49:07,810 - POCTrackGeneratorLogger - DEBUG - No detections for frame 297. Saved unannotated frame.
+2024-11-04 20:49:07,811 - POCTrackGeneratorLogger - DEBUG - No detections for frame 298. Saved unannotated frame.
+2024-11-04 20:49:07,812 - POCTrackGeneratorLogger - DEBUG - No detections for frame 299. Saved unannotated frame.
+2024-11-04 20:49:07,813 - POCTrackGeneratorLogger - DEBUG - No detections for frame 300. Saved unannotated frame.
+2024-11-04 20:49:07,813 - POCTrackGeneratorLogger - DEBUG - Enqueued a batch of 60 frames.
+2024-11-04 20:49:08,030 - POCTrackGeneratorLogger - DEBUG - Completed displaying a batch of frames.
+2024-11-04 20:49:08,033 - POCTrackGeneratorLogger - DEBUG - Display thread received a batch of 60 frames.
+2024-11-04 20:49:09,876 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:09,883 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:09,890 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:09,898 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:09,905 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:09,913 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:09,920 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:09,927 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:09,934 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:09,942 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:09,949 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:09,957 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:09,964 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:09,971 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:09,979 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:09,986 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:09,993 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,000 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,008 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,015 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,023 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,030 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,037 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,044 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,052 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,059 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,066 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,074 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,082 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,090 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,098 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,105 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,113 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,120 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,121 - POCTrackGeneratorLogger - DEBUG - Completed displaying a batch of frames.
+2024-11-04 20:49:10,128 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,135 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,142 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,149 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,157 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,164 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,172 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,179 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,186 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,193 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,200 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,208 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,215 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,223 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,230 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,238 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,245 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,253 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,261 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,268 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,275 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,283 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,290 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,298 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,306 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,313 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:10,313 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:49:10,318 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 2 to output/cameraThreading30fps60len4/track_2_subtrack_5/audio.wav.
+2024-11-04 20:49:10,351 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_2_5/cropped_frames
+2024-11-04 20:49:10,466 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:49:10,466 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.148 seconds (148.264 milliseconds)
+2024-11-04 20:49:10,471 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:49:10,476 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 3 to output/cameraThreading30fps60len4/track_3_subtrack_1/audio.wav.
+2024-11-04 20:49:10,512 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_3_1/cropped_frames
+2024-11-04 20:49:10,621 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:49:10,621 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.145 seconds (145.237 milliseconds)
+2024-11-04 20:49:10,628 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 301.
+2024-11-04 20:49:10,629 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 302.
+2024-11-04 20:49:10,630 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 303.
+2024-11-04 20:49:10,631 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 304.
+2024-11-04 20:49:10,633 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 305.
+2024-11-04 20:49:10,634 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 306.
+2024-11-04 20:49:10,635 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 307.
+2024-11-04 20:49:10,636 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 308.
+2024-11-04 20:49:10,637 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 309.
+2024-11-04 20:49:10,639 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 310.
+2024-11-04 20:49:10,640 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 311.
+2024-11-04 20:49:10,641 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 312.
+2024-11-04 20:49:10,642 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 313.
+2024-11-04 20:49:10,643 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 314.
+2024-11-04 20:49:10,644 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 315.
+2024-11-04 20:49:10,646 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 316.
+2024-11-04 20:49:10,647 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 317.
+2024-11-04 20:49:10,648 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 318.
+2024-11-04 20:49:10,649 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 319.
+2024-11-04 20:49:10,650 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 320.
+2024-11-04 20:49:10,651 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 321.
+2024-11-04 20:49:10,652 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 322.
+2024-11-04 20:49:10,654 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 323.
+2024-11-04 20:49:10,655 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 324.
+2024-11-04 20:49:10,656 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 325.
+2024-11-04 20:49:10,657 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 326.
+2024-11-04 20:49:10,658 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 327.
+2024-11-04 20:49:10,659 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 328.
+2024-11-04 20:49:10,660 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 329.
+2024-11-04 20:49:10,662 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 330.
+2024-11-04 20:49:10,663 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 331.
+2024-11-04 20:49:10,664 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 332.
+2024-11-04 20:49:10,665 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 333.
+2024-11-04 20:49:10,666 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 334.
+2024-11-04 20:49:10,667 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 335.
+2024-11-04 20:49:10,669 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 336.
+2024-11-04 20:49:10,670 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 337.
+2024-11-04 20:49:10,671 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 338.
+2024-11-04 20:49:10,672 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 339.
+2024-11-04 20:49:10,673 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 340.
+2024-11-04 20:49:10,674 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 341.
+2024-11-04 20:49:10,676 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 342.
+2024-11-04 20:49:10,677 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 343.
+2024-11-04 20:49:10,678 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 344.
+2024-11-04 20:49:10,679 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 345.
+2024-11-04 20:49:10,680 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 346.
+2024-11-04 20:49:10,681 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 347.
+2024-11-04 20:49:10,683 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 348.
+2024-11-04 20:49:10,684 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 349.
+2024-11-04 20:49:10,685 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 350.
+2024-11-04 20:49:10,686 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 351.
+2024-11-04 20:49:10,687 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 352.
+2024-11-04 20:49:10,688 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 353.
+2024-11-04 20:49:10,690 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 354.
+2024-11-04 20:49:10,691 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 355.
+2024-11-04 20:49:10,692 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 356.
+2024-11-04 20:49:10,693 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 357.
+2024-11-04 20:49:10,694 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 358.
+2024-11-04 20:49:10,695 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 359.
+2024-11-04 20:49:10,697 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 360.
+2024-11-04 20:49:10,697 - POCTrackGeneratorLogger - DEBUG - Enqueued a batch of 60 frames.
+2024-11-04 20:49:10,698 - POCTrackGeneratorLogger - DEBUG - Display thread received a batch of 60 frames.
+2024-11-04 20:49:12,465 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,473 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,480 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,488 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,495 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,502 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,510 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,517 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,524 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,532 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,539 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,547 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,554 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,561 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,568 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,577 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,584 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,591 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,598 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,605 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,613 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,620 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,628 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,635 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,642 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,649 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,657 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,664 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,671 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,679 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,687 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,694 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,701 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,708 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,716 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,723 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,730 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,738 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,745 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,753 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,760 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,767 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,774 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,781 - POCTrackGeneratorLogger - DEBUG - Completed displaying a batch of frames.
+2024-11-04 20:49:12,782 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,790 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,797 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,804 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,811 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,818 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,825 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,833 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,840 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,847 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,854 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,861 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,868 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,876 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,883 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,890 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,897 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:12,898 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:49:12,901 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 2 to output/cameraThreading30fps60len4/track_2_subtrack_6/audio.wav.
+2024-11-04 20:49:12,934 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_2_6/cropped_frames
+2024-11-04 20:49:13,027 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:49:13,027 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.126 seconds (125.633 milliseconds)
+2024-11-04 20:49:13,032 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:49:13,035 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 3 to output/cameraThreading30fps60len4/track_3_subtrack_2/audio.wav.
+2024-11-04 20:49:13,071 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_3_2/cropped_frames
+2024-11-04 20:49:13,192 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:49:13,192 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.157 seconds (157.091 milliseconds)
+2024-11-04 20:49:13,199 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 361.
+2024-11-04 20:49:13,200 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 362.
+2024-11-04 20:49:13,201 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 363.
+2024-11-04 20:49:13,202 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 364.
+2024-11-04 20:49:13,204 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 365.
+2024-11-04 20:49:13,205 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 366.
+2024-11-04 20:49:13,206 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 367.
+2024-11-04 20:49:13,207 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 368.
+2024-11-04 20:49:13,208 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 369.
+2024-11-04 20:49:13,210 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 370.
+2024-11-04 20:49:13,211 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 371.
+2024-11-04 20:49:13,212 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 372.
+2024-11-04 20:49:13,213 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 373.
+2024-11-04 20:49:13,214 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 374.
+2024-11-04 20:49:13,215 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 375.
+2024-11-04 20:49:13,216 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 376.
+2024-11-04 20:49:13,218 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 377.
+2024-11-04 20:49:13,219 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 378.
+2024-11-04 20:49:13,220 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 379.
+2024-11-04 20:49:13,221 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 380.
+2024-11-04 20:49:13,222 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 381.
+2024-11-04 20:49:13,223 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 382.
+2024-11-04 20:49:13,225 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 383.
+2024-11-04 20:49:13,226 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 384.
+2024-11-04 20:49:13,227 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 385.
+2024-11-04 20:49:13,228 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 386.
+2024-11-04 20:49:13,229 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 387.
+2024-11-04 20:49:13,230 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 388.
+2024-11-04 20:49:13,231 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 389.
+2024-11-04 20:49:13,233 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 390.
+2024-11-04 20:49:13,234 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 391.
+2024-11-04 20:49:13,235 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 392.
+2024-11-04 20:49:13,236 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 393.
+2024-11-04 20:49:13,237 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 394.
+2024-11-04 20:49:13,238 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 395.
+2024-11-04 20:49:13,240 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 396.
+2024-11-04 20:49:13,241 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 397.
+2024-11-04 20:49:13,242 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 398.
+2024-11-04 20:49:13,243 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 399.
+2024-11-04 20:49:13,244 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 400.
+2024-11-04 20:49:13,245 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 401.
+2024-11-04 20:49:13,247 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 402.
+2024-11-04 20:49:13,248 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 403.
+2024-11-04 20:49:13,249 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 404.
+2024-11-04 20:49:13,250 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 405.
+2024-11-04 20:49:13,251 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 406.
+2024-11-04 20:49:13,252 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 407.
+2024-11-04 20:49:13,253 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 408.
+2024-11-04 20:49:13,255 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 409.
+2024-11-04 20:49:13,256 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 410.
+2024-11-04 20:49:13,257 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 411.
+2024-11-04 20:49:13,258 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 412.
+2024-11-04 20:49:13,259 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 413.
+2024-11-04 20:49:13,260 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 414.
+2024-11-04 20:49:13,262 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 415.
+2024-11-04 20:49:13,263 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 416.
+2024-11-04 20:49:13,264 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 417.
+2024-11-04 20:49:13,265 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 418.
+2024-11-04 20:49:13,266 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 419.
+2024-11-04 20:49:13,267 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 420.
+2024-11-04 20:49:13,267 - POCTrackGeneratorLogger - DEBUG - Enqueued a batch of 60 frames.
+2024-11-04 20:49:13,267 - POCTrackGeneratorLogger - DEBUG - Display thread received a batch of 60 frames.
+2024-11-04 20:49:15,009 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,017 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,024 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,032 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,039 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,047 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,054 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,061 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,068 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,077 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,084 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,091 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,098 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,106 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,113 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,121 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,128 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,135 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,142 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,149 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,156 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,163 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,170 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,178 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,185 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,192 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,199 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,207 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,214 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,221 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,229 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,236 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,243 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,251 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,258 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,265 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,273 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,280 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,287 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,294 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,302 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,309 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,316 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,324 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,331 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,338 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,345 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,351 - POCTrackGeneratorLogger - DEBUG - Completed displaying a batch of frames.
+2024-11-04 20:49:15,352 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,359 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,367 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,374 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,381 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,389 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,396 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,403 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,411 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,418 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,425 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,432 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,440 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:15,441 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:49:15,446 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 2 to output/cameraThreading30fps60len4/track_2_subtrack_7/audio.wav.
+2024-11-04 20:49:15,479 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_2_7/cropped_frames
+2024-11-04 20:49:15,594 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:49:15,594 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.147 seconds (147.436 milliseconds)
+2024-11-04 20:49:15,599 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:49:15,604 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 3 to output/cameraThreading30fps60len4/track_3_subtrack_3/audio.wav.
+2024-11-04 20:49:15,643 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_3_3/cropped_frames
+2024-11-04 20:49:15,755 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:49:15,755 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.150 seconds (150.267 milliseconds)
+2024-11-04 20:49:15,759 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 421.
+2024-11-04 20:49:15,760 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 422.
+2024-11-04 20:49:15,761 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 423.
+2024-11-04 20:49:15,762 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 424.
+2024-11-04 20:49:15,764 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 425.
+2024-11-04 20:49:15,765 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 426.
+2024-11-04 20:49:15,766 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 427.
+2024-11-04 20:49:15,768 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 428.
+2024-11-04 20:49:15,769 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 429.
+2024-11-04 20:49:15,770 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 430.
+2024-11-04 20:49:15,771 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 431.
+2024-11-04 20:49:15,772 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 432.
+2024-11-04 20:49:15,773 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 433.
+2024-11-04 20:49:15,775 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 434.
+2024-11-04 20:49:15,776 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 435.
+2024-11-04 20:49:15,777 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 436.
+2024-11-04 20:49:15,778 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 437.
+2024-11-04 20:49:15,779 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 438.
+2024-11-04 20:49:15,780 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 439.
+2024-11-04 20:49:15,781 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 440.
+2024-11-04 20:49:15,783 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 441.
+2024-11-04 20:49:15,784 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 442.
+2024-11-04 20:49:15,785 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 443.
+2024-11-04 20:49:15,786 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 444.
+2024-11-04 20:49:15,787 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 445.
+2024-11-04 20:49:15,788 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 446.
+2024-11-04 20:49:15,790 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 447.
+2024-11-04 20:49:15,791 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 448.
+2024-11-04 20:49:15,792 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 449.
+2024-11-04 20:49:15,793 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 450.
+2024-11-04 20:49:15,794 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 451.
+2024-11-04 20:49:15,795 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 452.
+2024-11-04 20:49:15,796 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 453.
+2024-11-04 20:49:15,798 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 454.
+2024-11-04 20:49:15,799 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 455.
+2024-11-04 20:49:15,800 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 456.
+2024-11-04 20:49:15,801 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 457.
+2024-11-04 20:49:15,802 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 458.
+2024-11-04 20:49:15,803 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 459.
+2024-11-04 20:49:15,805 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 460.
+2024-11-04 20:49:15,806 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 461.
+2024-11-04 20:49:15,807 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 462.
+2024-11-04 20:49:15,808 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 463.
+2024-11-04 20:49:15,809 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 464.
+2024-11-04 20:49:15,811 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 465.
+2024-11-04 20:49:15,812 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 466.
+2024-11-04 20:49:15,813 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 467.
+2024-11-04 20:49:15,814 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 468.
+2024-11-04 20:49:15,815 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 469.
+2024-11-04 20:49:15,816 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 470.
+2024-11-04 20:49:15,818 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 471.
+2024-11-04 20:49:15,819 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 472.
+2024-11-04 20:49:15,820 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 473.
+2024-11-04 20:49:15,821 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 474.
+2024-11-04 20:49:15,822 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 475.
+2024-11-04 20:49:15,823 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 476.
+2024-11-04 20:49:15,825 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 477.
+2024-11-04 20:49:15,826 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 478.
+2024-11-04 20:49:15,827 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 479.
+2024-11-04 20:49:15,828 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 480.
+2024-11-04 20:49:15,828 - POCTrackGeneratorLogger - DEBUG - Enqueued a batch of 60 frames.
+2024-11-04 20:49:15,828 - POCTrackGeneratorLogger - DEBUG - Display thread received a batch of 60 frames.
+2024-11-04 20:49:17,557 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,568 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,580 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,590 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,597 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,607 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,618 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,628 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,637 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,645 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,653 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,660 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,668 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,675 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,683 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,690 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,697 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,706 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,714 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,721 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,728 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,736 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,743 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,750 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,757 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,765 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,772 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,779 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,787 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,794 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,801 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,808 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,815 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,823 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,830 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,837 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,846 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,853 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,860 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,868 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,875 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,883 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,890 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,897 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,904 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,912 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,913 - POCTrackGeneratorLogger - DEBUG - Completed displaying a batch of frames.
+2024-11-04 20:49:17,919 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,927 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,934 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,941 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,948 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,956 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,963 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,970 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,977 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,984 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,991 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:17,998 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:18,006 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:18,013 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:18,013 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:49:18,020 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 2 to output/cameraThreading30fps60len4/track_2_subtrack_8/audio.wav.
+2024-11-04 20:49:18,059 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_2_8/cropped_frames
+2024-11-04 20:49:18,155 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:49:18,155 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.135 seconds (134.965 milliseconds)
+2024-11-04 20:49:18,161 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:49:18,178 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 3 to output/cameraThreading30fps60len4/track_3_subtrack_4/audio.wav.
+2024-11-04 20:49:18,223 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_3_4/cropped_frames
+2024-11-04 20:49:18,327 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:49:18,328 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.149 seconds (149.143 milliseconds)
+2024-11-04 20:49:18,332 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 481.
+2024-11-04 20:49:18,333 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 482.
+2024-11-04 20:49:18,334 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 483.
+2024-11-04 20:49:18,336 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 484.
+2024-11-04 20:49:18,337 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 485.
+2024-11-04 20:49:18,338 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 486.
+2024-11-04 20:49:18,339 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 487.
+2024-11-04 20:49:18,340 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 488.
+2024-11-04 20:49:18,341 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 489.
+2024-11-04 20:49:18,343 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 490.
+2024-11-04 20:49:18,344 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 491.
+2024-11-04 20:49:18,345 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 492.
+2024-11-04 20:49:18,346 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 493.
+2024-11-04 20:49:18,347 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 494.
+2024-11-04 20:49:18,348 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 495.
+2024-11-04 20:49:18,350 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 496.
+2024-11-04 20:49:18,351 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 497.
+2024-11-04 20:49:18,352 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 498.
+2024-11-04 20:49:18,353 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 499.
+2024-11-04 20:49:18,355 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 500.
+2024-11-04 20:49:18,356 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 501.
+2024-11-04 20:49:18,357 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 502.
+2024-11-04 20:49:18,358 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 503.
+2024-11-04 20:49:18,359 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 504.
+2024-11-04 20:49:18,361 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 505.
+2024-11-04 20:49:18,362 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 506.
+2024-11-04 20:49:18,363 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 507.
+2024-11-04 20:49:18,364 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 508.
+2024-11-04 20:49:18,365 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 509.
+2024-11-04 20:49:18,366 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 510.
+2024-11-04 20:49:18,367 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 511.
+2024-11-04 20:49:18,369 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 512.
+2024-11-04 20:49:18,370 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 513.
+2024-11-04 20:49:18,371 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 514.
+2024-11-04 20:49:18,372 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 515.
+2024-11-04 20:49:18,373 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 516.
+2024-11-04 20:49:18,374 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 517.
+2024-11-04 20:49:18,375 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 518.
+2024-11-04 20:49:18,377 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 519.
+2024-11-04 20:49:18,378 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 520.
+2024-11-04 20:49:18,379 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 521.
+2024-11-04 20:49:18,380 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 522.
+2024-11-04 20:49:18,381 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 523.
+2024-11-04 20:49:18,382 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 524.
+2024-11-04 20:49:18,384 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 525.
+2024-11-04 20:49:18,385 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 526.
+2024-11-04 20:49:18,386 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 527.
+2024-11-04 20:49:18,387 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 528.
+2024-11-04 20:49:18,388 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 529.
+2024-11-04 20:49:18,389 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 530.
+2024-11-04 20:49:18,390 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 531.
+2024-11-04 20:49:18,392 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 532.
+2024-11-04 20:49:18,393 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 533.
+2024-11-04 20:49:18,394 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 534.
+2024-11-04 20:49:18,395 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 535.
+2024-11-04 20:49:18,396 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 536.
+2024-11-04 20:49:18,398 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 537.
+2024-11-04 20:49:18,399 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 538.
+2024-11-04 20:49:18,400 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 539.
+2024-11-04 20:49:18,401 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 540.
+2024-11-04 20:49:18,401 - POCTrackGeneratorLogger - DEBUG - Enqueued a batch of 60 frames.
+2024-11-04 20:49:18,401 - POCTrackGeneratorLogger - DEBUG - Display thread received a batch of 60 frames.
+2024-11-04 20:49:20,092 - POCTrackGeneratorLogger - INFO - Time taken to run complete code is: 25.836 seconds (836.461 milliseconds)
+2024-11-04 20:49:20,101 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,109 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,116 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,123 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,130 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,138 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,145 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,152 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,159 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,166 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,173 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,180 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,188 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,195 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,202 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,209 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,216 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,223 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,230 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,237 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,246 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,253 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,260 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,267 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,274 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,281 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,289 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,296 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,303 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,310 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,317 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,324 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,331 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,337 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,344 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,352 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,359 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,366 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,373 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,380 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,387 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,394 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,401 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,408 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,416 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,424 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,431 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,438 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,446 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,454 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,461 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,468 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,475 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,483 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,486 - POCTrackGeneratorLogger - DEBUG - Completed displaying a batch of frames.
+2024-11-04 20:49:20,490 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,497 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,504 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,511 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,518 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,525 - POCTrackGeneratorLogger - DEBUG - Detected 2 faces in current frame.
+2024-11-04 20:49:20,526 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:49:20,534 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 2 to output/cameraThreading30fps60len4/track_2_subtrack_9/audio.wav.
+2024-11-04 20:49:20,566 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_2_9/cropped_frames
+2024-11-04 20:49:20,684 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:49:20,684 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.150 seconds (149.780 milliseconds)
+2024-11-04 20:49:20,689 - POCTrackGeneratorLogger - DEBUG - Applied median filter to bounding boxes.
+2024-11-04 20:49:20,713 - POCTrackGeneratorLogger - DEBUG - Saved audio segment for Track 3 to output/cameraThreading30fps60len4/track_3_subtrack_5/audio.wav.
+2024-11-04 20:49:20,754 - POCTrackGeneratorLogger - DEBUG - Frames directory: output/cameraThreading30fps60len4/temp_track_3_5/cropped_frames
+2024-11-04 20:49:20,846 - POCTrackGeneratorLogger - DEBUG - Number of confidence scores returned: 50
+2024-11-04 20:49:20,846 - POCTrackGeneratorLogger - INFO - Time taken to run one batch of TalkNet evaluation: 0.133 seconds (133.355 milliseconds)
+2024-11-04 20:49:20,851 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 541.
+2024-11-04 20:49:20,852 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 542.
+2024-11-04 20:49:20,853 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 543.
+2024-11-04 20:49:20,854 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 544.
+2024-11-04 20:49:20,855 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 545.
+2024-11-04 20:49:20,856 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 546.
+2024-11-04 20:49:20,858 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 547.
+2024-11-04 20:49:20,859 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 548.
+2024-11-04 20:49:20,860 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 549.
+2024-11-04 20:49:20,861 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 550.
+2024-11-04 20:49:20,862 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 551.
+2024-11-04 20:49:20,863 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 552.
+2024-11-04 20:49:20,865 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 553.
+2024-11-04 20:49:20,866 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 554.
+2024-11-04 20:49:20,867 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 555.
+2024-11-04 20:49:20,868 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 556.
+2024-11-04 20:49:20,869 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 557.
+2024-11-04 20:49:20,870 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 558.
+2024-11-04 20:49:20,871 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 559.
+2024-11-04 20:49:20,873 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 560.
+2024-11-04 20:49:20,874 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 561.
+2024-11-04 20:49:20,875 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 562.
+2024-11-04 20:49:20,876 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 563.
+2024-11-04 20:49:20,877 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 564.
+2024-11-04 20:49:20,878 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 565.
+2024-11-04 20:49:20,880 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 566.
+2024-11-04 20:49:20,881 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 567.
+2024-11-04 20:49:20,882 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 568.
+2024-11-04 20:49:20,883 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 569.
+2024-11-04 20:49:20,884 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 570.
+2024-11-04 20:49:20,885 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 571.
+2024-11-04 20:49:20,887 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 572.
+2024-11-04 20:49:20,888 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 573.
+2024-11-04 20:49:20,889 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 574.
+2024-11-04 20:49:20,890 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 575.
+2024-11-04 20:49:20,891 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 576.
+2024-11-04 20:49:20,892 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 577.
+2024-11-04 20:49:20,893 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 578.
+2024-11-04 20:49:20,895 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 579.
+2024-11-04 20:49:20,896 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 580.
+2024-11-04 20:49:20,897 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 581.
+2024-11-04 20:49:20,898 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 582.
+2024-11-04 20:49:20,899 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 583.
+2024-11-04 20:49:20,900 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 584.
+2024-11-04 20:49:20,902 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 585.
+2024-11-04 20:49:20,903 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 586.
+2024-11-04 20:49:20,904 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 587.
+2024-11-04 20:49:20,905 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 588.
+2024-11-04 20:49:20,906 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 589.
+2024-11-04 20:49:20,907 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 590.
+2024-11-04 20:49:20,909 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 591.
+2024-11-04 20:49:20,910 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 592.
+2024-11-04 20:49:20,911 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 593.
+2024-11-04 20:49:20,912 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 594.
+2024-11-04 20:49:20,913 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 595.
+2024-11-04 20:49:20,914 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 596.
+2024-11-04 20:49:20,916 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 597.
+2024-11-04 20:49:20,917 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 598.
+2024-11-04 20:49:20,918 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 599.
+2024-11-04 20:49:20,919 - POCTrackGeneratorLogger - DEBUG - Annotated and saved frame 600.
+2024-11-04 20:49:20,919 - POCTrackGeneratorLogger - DEBUG - Enqueued a batch of 60 frames.
+2024-11-04 20:49:20,920 - POCTrackGeneratorLogger - DEBUG - Display thread received a batch of 60 frames.
+2024-11-04 20:49:21,920 - POCTrackGeneratorLogger - DEBUG - Processing thread detected processing_done flag. Exiting.
+2024-11-04 20:49:23,004 - POCTrackGeneratorLogger - DEBUG - Completed displaying a batch of frames.
+2024-11-04 20:49:24,004 - POCTrackGeneratorLogger - DEBUG - Processing done and batch_queue is empty. Exiting display thread.
+2024-11-04 20:49:24,006 - POCTrackGeneratorLogger - DEBUG - Display window 'Annotated Video' closed.
+2024-11-04 20:49:24,008 - POCTrackGeneratorLogger - DEBUG - Saved track information to output/cameraThreading30fps60len4/trackInfo.pkl.
+2024-11-04 20:49:24,008 - POCTrackGeneratorLogger - DEBUG - Saved track information to output/cameraThreading30fps60len4/trackInfo.txt.
+2024-11-04 20:49:24,008 - POCTrackGeneratorLogger - INFO - Starting to merge audio segments...
+2024-11-04 20:49:24,016 - POCTrackGeneratorLogger - INFO - Merged audio saved to output/cameraThreading30fps60len4/merged_audio.wav.
+2024-11-04 20:49:24,016 - POCTrackGeneratorLogger - INFO - Starting to assemble annotated frames into video...
+2024-11-04 20:49:26,744 - POCTrackGeneratorLogger - INFO - Annotated video saved to output/cameraThreading30fps60len4/annotated_video.mp4.
+2024-11-04 20:49:26,744 - POCTrackGeneratorLogger - INFO - Combining merged audio with the annotated video...
+2024-11-04 20:49:28,280 - POCTrackGeneratorLogger - INFO - Final video with merged audio saved to output/cameraThreading30fps60len4/final_output_30.0_60.mp4.
+2024-11-04 20:49:28,288 - POCTrackGeneratorLogger - INFO - Audio stream closed.
+2024-11-04 20:49:28,294 - POCTrackGeneratorLogger - DEBUG - Released video capture resource.
+2024-11-04 20:49:28,294 - POCTrackGeneratorLogger - INFO - Code execution completed. Please check the annotated frames and the display window.

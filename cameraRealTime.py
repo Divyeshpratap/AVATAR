@@ -14,8 +14,9 @@ import pickle
 import json
 from collections import defaultdict, deque
 from scipy.signal import medfilt
-from moviepy.editor import VideoFileClip
+from moviepy.editor import VideoFileClip, ImageSequenceClip, AudioFileClip, CompositeVideoClip
 import glob
+from pydub import AudioSegment
 import subprocess
 from sort import Sort
 from scipy import signal
@@ -227,16 +228,16 @@ class POCTrackGenerator:
 
         # Initialize video capture from camera
         self.cap = cv2.VideoCapture(0)
-        print(f'setting video fps to 25')
         # self.cap.set(cv2.CAP_PROP_FPS, 25)
         if not self.cap.isOpened():
             logger.error(f"Cannot open camera.")
             exit(1)
 
         # Get video properties
-
-        print(f'video fps is {self.cap.get(cv2.CAP_PROP_FPS)}')
         self.video_fps = self.cap.get(cv2.CAP_PROP_FPS) # actual FPS is 30
+        # self.video_fps = 25 #temporary override
+        print(f'video fps is {self.cap.get(cv2.CAP_PROP_FPS)}')
+        # self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 25)
         self.samples_per_frame = int(self.args.audio_rate / self.video_fps)  # 533 samples per frame
 
         # if self.video_fps != 25:
@@ -291,7 +292,7 @@ class POCTrackGenerator:
                                   channels=args.channels,
                                   rate=args.audio_rate,
                                   input=True,
-                                #   input_device_index=11,
+                                  input_device_index=11,
                                   frames_per_buffer=args.chunk_size)
         logger.info("Audio stream opened.")
 
@@ -545,7 +546,7 @@ class POCTrackGenerator:
         total_frames = int(audio_rate / chunk * seconds)
         startTime = datetime.now()
         for _ in range(total_frames):
-            data = stream.read(chunk)
+            data = stream.read(chunk, exception_on_overflow=False)
             frames.append(data)
         endTime = datetime.now()
         print(f'Actual time taken to capture {total_frames} audio frames is {(endTime - startTime).total_seconds()} seconds')
@@ -589,7 +590,7 @@ class POCTrackGenerator:
         """
         while True:
             try:
-                data = self.processing_queue.get(timeout=10)  # Adjust timeout as needed
+                data = self.processing_queue.get(timeout=1)  # Adjust timeout as needed
             except queue.Empty:
                 if self.processing_done:
                     logger.debug("Processing thread detected processing_done flag. Exiting.")
@@ -615,7 +616,7 @@ class POCTrackGenerator:
                 bboxes[idx] = detections
                 current_frame_number = curr_frame_number
 
-                logger.info(f'Current frame number is {current_frame_number}')
+                # logger.info(f'Current frame number is {current_frame_number}')
 
                 # Update tracker with detections
                 dets = np.array(detections)
@@ -756,7 +757,7 @@ class POCTrackGenerator:
         frame_count = 0
         batchNumber = 0
         start_frame_number = 1
-
+        startTime = datetime.now()
         while not self.processing_done:
             batchNumber += 1
             end_frame_number = start_frame_number
@@ -764,7 +765,6 @@ class POCTrackGenerator:
             # Capture audio and video in separate threads
             audio_queue = queue.Queue()
             video_queue = queue.Queue()
-
             audio_thread = threading.Thread(
                 target=self.capture_audio_wrapper,
                 args=(self.stream, self.batch_size, self.args.audio_rate, audio_queue)
@@ -811,10 +811,10 @@ class POCTrackGenerator:
 
             # Update start_frame_number for the next batch
             start_frame_number += len(frames)
-            # if start_frame_number >= 540:
-            #     self.processing_done = True
-
-
+            if start_frame_number >= 600:
+                endTime = datetime.now()
+                print(f'Actual time taken to run only the frames is {(endTime - startTime).total_seconds()} seconds')
+                self.processing_done = True
     # ==================== MAIN ====================
 
 def main():
@@ -891,6 +891,96 @@ def main():
             logger.debug(f"Saved track information to {track_info_txt_path}.")
         except Exception as e:
             logger.error(f"Failed to save trackInfo.txt: {e}")
+
+        # ==================== Merge Audio Segments ====================
+
+        logger.info("Starting to merge audio segments...")
+
+        # Path to save merged audio
+        merged_audio_path = os.path.join(track_generator.tmp_dir, "merged_audio.wav")
+
+        # Collect all audio segment paths
+        audio_segments = glob.glob(os.path.join(track_generator.tmp_dir, "track_*_subtrack_*/audio.wav"))
+        audio_segments.sort()  # Ensure consistent order
+
+        if not audio_segments:
+            logger.error("No audio segments found to merge.")
+            merged_audio = None
+        else:
+            try:
+                # Initialize an empty AudioSegment
+                merged_audio = AudioSegment.empty()
+
+                for segment_path in audio_segments:
+                    audio = AudioSegment.from_wav(segment_path)
+                    merged_audio += audio  # Concatenate audio segments
+
+                # Export merged audio
+                merged_audio.export(merged_audio_path, format="wav")
+                logger.info(f"Merged audio saved to {merged_audio_path}.")
+            except Exception as e:
+                logger.error(f"Failed to merge audio segments: {e}")
+                merged_audio = None
+
+        # ==================== Assemble Annotated Frames into Video ====================
+
+        logger.info("Starting to assemble annotated frames into video...")
+
+        # Directory containing annotated frames
+        annotated_frames_dir = track_generator.annotated_frames_dir
+
+        # Collect all annotated frame paths
+        frame_paths = glob.glob(os.path.join(annotated_frames_dir, "annotated_frame_*.jpg"))
+        frame_paths.sort()  # Ensure frames are in order
+
+        if not frame_paths:
+            logger.error("No annotated frames found to assemble into video.")
+            video_clip = None
+        else:
+            try:
+                # Create a video clip from image sequence
+                video_clip = ImageSequenceClip(frame_paths, fps=track_generator.video_fps)
+                video_output_path = os.path.join(track_generator.tmp_dir, "annotated_video.mp4")
+                video_clip.write_videofile(video_output_path, codec='libx264', audio=False)
+                logger.info(f"Annotated video saved to {video_output_path}.")
+            except Exception as e:
+                logger.error(f"Failed to assemble annotated frames into video: {e}")
+                video_clip = None
+
+        # ==================== Combine Video with Merged Audio ====================
+
+        if merged_audio and frame_paths:
+            logger.info("Combining merged audio with the annotated video...")
+
+            final_output_path = os.path.join(track_generator.tmp_dir, f"final_output_{track_generator.video_fps}_{track_generator.batch_size}.mp4")
+            try:
+                # Load the video clip
+                video = VideoFileClip(os.path.join(track_generator.tmp_dir, "annotated_video.mp4"))
+
+                # Load the merged audio
+                audio = AudioFileClip(merged_audio_path)
+
+                # Ensure audio duration matches video duration
+                if audio.duration > video.duration:
+                    audio = audio.subclip(0, video.duration)
+                elif audio.duration < video.duration:
+                    silence = AudioSegment.silent(duration=(video.duration - audio.duration) * 1000)  # in ms
+                    audio_segment = AudioSegment.from_wav(merged_audio_path)
+                    audio_segment += silence
+                    audio_segment.export(merged_audio_path, format="wav")
+                    audio = AudioFileClip(merged_audio_path)
+
+                # Set the audio to the video
+                final_video = video.set_audio(audio)
+
+                # Write the final video file
+                final_video.write_videofile(final_output_path, codec='libx264', audio_codec='aac')
+                logger.info(f"Final video with merged audio saved to {final_output_path}.")
+            except Exception as e:
+                logger.error(f"Failed to combine video with merged audio: {e}")
+        else:
+            logger.warning("Skipping combining video with audio due to missing components.")
+
 
         # Stop audio capturing
         track_generator.stream.stop_stream()
