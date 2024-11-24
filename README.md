@@ -1,6 +1,9 @@
 # AVATAR
 
 **Audio-Visual Active Tracking and Annotation Rendering**
+
+AVATAR is a first of its kind near real-time active speaker detection pipeline that takes camera input or saved video to detect and track multiple faces using MTCNN and SORT, evaluates lip-sync scores using SyncNet or TalkNet models, and finally annotates the active speaker in real-time using a Producer-Consumer Multi-Threading Architecture.
+
 Note: The project is still in development. Please revisit for exciting future developments.
 
 ## DEMO
