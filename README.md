@@ -1,6 +1,16 @@
 # AVATAR
 
 **Audio-Visual Active Tracking and Annotation Rendering**
+Note: The project is still in development. Please revisit for exciting future developments.
+
+## DEMO
+
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/af9571b2-113a-4d4c-a12e-00f08d8ffcfa" controls width="75%">
+    Your browser does not support the video tag.
+  </video>
+  <p><i>Acrive Speaker Detection Demo</i></p>
+</div>
 
 
 ## Table of Contents
