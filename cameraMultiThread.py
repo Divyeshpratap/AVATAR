@@ -136,13 +136,12 @@ class TalkNetInstance:
 
         # ========== Load audio ==========
         sample_rate, audio = wavfile.read(audio_file)
-        if sample_rate != 16000:
-            self.logger.warning(f"Expected audio sample rate of 16000 Hz, but got {sample_rate} Hz.")
-            # Resample audio to 16000 Hz
-            import librosa
-            audio = librosa.resample(audio.astype(float), sample_rate, 16000)
-            audio = audio.astype(np.int16)
-            sample_rate = 16000
+        # if sample_rate != 16000:
+        #     self.logger.warning(f"Expected audio sample rate of 16000 Hz, but got {sample_rate} Hz.")
+        #     # Resample audio to 16000 Hz
+        #     audio = librosa.resample(audio.astype(float), sample_rate, 16000)
+        #     audio = audio.astype(np.int16)
+        #     sample_rate = 16000
 
         audioFeature = python_speech_features.mfcc(audio, 16000, numcep=13, winlen=0.025, winstep=0.010)
 
@@ -323,10 +322,10 @@ class POCTrackGenerator:
         # Initialize audio capturing in main thread
         self.p = pyaudio.PyAudio()
         self.stream = self.p.open(format=args.audio_format,
-                                  channels=args.channels,
+                                  channels=1,
                                   rate=args.audio_rate,
                                   input=True,
-                                  input_device_index=6,
+                                  input_device_index=10,
                                   frames_per_buffer=args.chunk_size)
         logger.info("Audio stream opened.")
 
@@ -349,7 +348,7 @@ class POCTrackGenerator:
         img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
         # Detect faces
-        bboxes = self.s3fd.detect_faces(img, conf_th=0.9, scales=[0.25])
+        bboxes = self.s3fd.detect_faces(img, conf_th=0.7, scales=[0.25])
 
         detections = []
         if bboxes is not None:
@@ -497,7 +496,7 @@ class POCTrackGenerator:
             frame_number_text = f"Frame {frame_number:06d}"
             text_position = (10, frame.shape[0] - 10)  # Bottom-left corner
             cv2.putText(frame, frame_number_text, text_position,
-                        cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 3)
+                        cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0, 165, 255), 3)
 
         # Save annotated frame
         annotated_frame_path = os.path.join(self.annotated_frames_dir, f'annotated_frame_{frame_number:06d}.jpg')
@@ -629,7 +628,7 @@ class POCTrackGenerator:
         print(f'Start Time at when batch number {batchNumber} video capture started is {startTime}')
         for i in range(frames_per_clip):
             ret, frame = cap.read()
-            # print(f'Current Frame number which is being captured is {(batchNumber-1)*30 + i}')
+            print(f'Current Frame number which is being captured is {(batchNumber-1)*30 + i}')
             if not ret:
                 logging.error("Failed to read frame from camera.")
                 break
@@ -651,9 +650,11 @@ class POCTrackGenerator:
     def process_data(self):
         """
         Continuously processes captured audio and video data from the processing_queue.
+        Utilizes threading to perform TalkNet evaluations for multiple tracks in parallel.
         """
         while True:
             try:
+                # Attempt to retrieve data from the processing queue without blocking
                 data = self.processing_queue.get(timeout=0.0)  # Adjust timeout as needed
             except queue.Empty:
                 if self.processing_done:
@@ -671,6 +672,7 @@ class POCTrackGenerator:
             current_batch_tracked_objects = set()
             curr_frame_number = start_frame_number - 1  # Initialize to one less to start correctly
 
+            # Process each frame in the current batch
             for idx, frame in enumerate(frames):
                 bboxes.append([])
                 curr_frame_number += 1
@@ -679,8 +681,6 @@ class POCTrackGenerator:
                 detections = self.detect_faces_s3fd(frame)
                 bboxes[idx] = detections
                 current_frame_number = curr_frame_number
-
-                # logger.info(f'Current frame number is {current_frame_number}')
 
                 # Update tracker with detections
                 dets = np.array(detections)
@@ -691,7 +691,7 @@ class POCTrackGenerator:
 
                 tracked_objects = self.tracker.update(dets)
 
-                # Update current_tracks
+                # Update current_tracks with tracking information
                 with self.lock:
                     for trk in tracked_objects:
                         x1, y1, x2, y2, track_id = trk
@@ -700,24 +700,36 @@ class POCTrackGenerator:
                         bbox = [float(x1), float(y1), float(x2), float(y2)]
 
                         # Initialize track if new (handled by defaultdict)
-                        self.current_tracks[track_id]['frames'].append(current_frame_number)
+                        self.current_tracks[track_id]['frames'].append(curr_frame_number)
                         self.current_tracks[track_id]['bboxes'].append(bbox)
 
-            # Collect detection data for annotation
+            # Prepare to collect detection data for annotation
             detection_data = defaultdict(list)
-            for track_id in current_batch_tracked_objects:
-                # Check if track has enough frames for TalkNet evaluation
-                with self.lock:
-                    if len(self.current_tracks[track_id]['frames']) < self.batch_size:
-                        continue
 
-                    # Extract frames and bboxes for the track
-                    track_frames_numbers = self.current_tracks[track_id]['frames'][-self.batch_size:]
-                    track_bboxes = self.current_tracks[track_id]['bboxes'][-self.batch_size:]
+            # Collect all tracks that have enough frames for TalkNet evaluation
+            tracks_to_process = []
+            with self.lock:
+                for track_id in current_batch_tracked_objects:
+                    if len(self.current_tracks[track_id]['frames']) >= self.batch_size:
+                        track_frames_numbers = self.current_tracks[track_id]['frames'][-self.batch_size:]
+                        track_bboxes = self.current_tracks[track_id]['bboxes'][-self.batch_size:]
+                        tracks_to_process.append((track_id, track_frames_numbers, track_bboxes))
 
-                track_bboxes = self.smoothenBoxes(track_bboxes, self.kernel_size, self.crop_scale)
+            # Define the function to process each track in a separate thread
+            def process_track(track_id, track_frames_numbers, track_bboxes):
+                """
+                Processes a single track: smoothens bounding boxes, extracts frames, saves audio,
+                runs TalkNet evaluation, and updates detection_data.
 
-                # Extract the actual frame images
+                Args:
+                    track_id (int): Unique identifier for the track.
+                    track_frames_numbers (list): List of frame numbers for the track.
+                    track_bboxes (list): List of bounding boxes for the track.
+                """
+                # Smooth bounding boxes
+                smoothed_bboxes = self.smoothenBoxes(track_bboxes, self.kernel_size, self.crop_scale)
+
+                # Extract the actual frame images based on frame numbers
                 start_frame_number_of_batch = curr_frame_number - self.batch_size + 1
                 relative_indices = [i - start_frame_number_of_batch for i in track_frames_numbers]
                 # Ensure indices are within the current batch
@@ -726,10 +738,13 @@ class POCTrackGenerator:
 
                 if not track_frames:
                     logger.warning(f"No valid frames found for Track {track_id}. Skipping TalkNet evaluation.")
-                    continue
+                    return
 
                 # Save audio data to WAV file
-                audio_dir = os.path.join(self.tmp_dir, f'track_{track_id}_subtrack_{self.current_tracks[track_id]["sub_track_count"]}')
+                audio_dir = os.path.join(
+                    self.tmp_dir,
+                    f'track_{track_id}_subtrack_{self.current_tracks[track_id]["sub_track_count"]}'
+                )
                 os.makedirs(audio_dir, exist_ok=True)
                 audio_segment_path = os.path.join(audio_dir, 'audio.wav')
 
@@ -748,30 +763,35 @@ class POCTrackGenerator:
                 if audio_segment_path and os.path.exists(audio_segment_path):
                     # Run TalkNet evaluation
                     start_time_eval = datetime.now()
-                    talkNet_results = self.run_talknet_evaluation(track_id, track_frames, track_bboxes, audio_segment_path)
+                    talkNet_results = self.run_talknet_evaluation(
+                        track_id, track_frames, smoothed_bboxes, audio_segment_path
+                    )
                     end_time_eval = datetime.now()
                     time_taken = end_time_eval - start_time_eval
                     time_taken_seconds = time_taken.total_seconds()
                     time_taken_milliseconds = time_taken.microseconds / 1000
-                    # logger.info(f"Time taken to run one batch of TalkNet evaluation: {time_taken_seconds:.3f} seconds ({time_taken_milliseconds:.3f} milliseconds)")
+                    logger.info(f"Time taken to run one batch of TalkNet evaluation: {time_taken_seconds:.3f} seconds ({time_taken_milliseconds:.3f} milliseconds)")
 
                     # Annotate and collect frames with TalkNet results
                     if talkNet_results:
                         for i in range(len(track_frames_numbers)):
                             current_frame_number_sync = track_frames_numbers[i]
-                            frame_image = track_frames[i].copy()
-                            bbox = track_bboxes[i]
-                            conf_score = talkNet_results['frame_confidences'][i] if i < len(talkNet_results['frame_confidences']) else 0.0
-
-                            # Prepare detection data (excluding frame_image)
-                            detection_data[current_frame_number_sync].append(
-                                {
-                                    'track_number': track_id,
-                                    'bounding_box': bbox,
-                                    'frame_confidence': conf_score
-                                }
+                            bbox = smoothed_bboxes[i]
+                            conf_score = (
+                                talkNet_results['frame_confidences'][i]
+                                if i < len(talkNet_results['frame_confidences'])
+                                else 0.0
                             )
 
+                            # Prepare detection data (excluding frame_image)
+                            with self.lock:
+                                detection_data[current_frame_number_sync].append(
+                                    {
+                                        'track_number': track_id,
+                                        'bounding_box': bbox,
+                                        'frame_confidence': conf_score
+                                    }
+                                )
                 else:
                     logger.warning(f'Audio segment not found for Track {track_id}. Skipping TalkNet evaluation.')
 
@@ -780,6 +800,20 @@ class POCTrackGenerator:
                     self.current_tracks[track_id]['sub_track_count'] += 1
                     self.current_tracks[track_id]['frames'] = []
                     self.current_tracks[track_id]['bboxes'] = []
+
+            # Create and start threads for each track to process
+            threads = []
+            for track_id, track_frames_numbers, track_bboxes in tracks_to_process:
+                thread = threading.Thread(
+                    target=process_track,
+                    args=(track_id, track_frames_numbers, track_bboxes)
+                )
+                threads.append(thread)
+                thread.start()
+
+            # Wait for all threads to finish
+            for thread in threads:
+                thread.join()
 
             # Annotate all frames in the current batch with their respective detections
             annotated_batch = []
@@ -806,7 +840,6 @@ class POCTrackGenerator:
 
             # Update start_frame_number for the next batch
             start_frame_number = curr_frame_number + 1
-
 
 
     def run(self):
@@ -896,7 +929,7 @@ def main():
 
     # Audio capturing arguments
     parser.add_argument('--audio_format', type=int, default=pyaudio.paInt16, help='Audio format')
-    parser.add_argument('--channels', type=int, default=1, help='Number of audio channels')
+    parser.add_argument('--channels', type=int, default=2, help='Number of audio channels')
     parser.add_argument('--audio_rate', type=int, default=16000, help='Audio sampling rate')
     parser.add_argument('--chunk_size', type=int, default=1024, help='Audio chunk size for buffering')
 
