@@ -131,17 +131,10 @@ class TalkNetInstance:
         Returns:
             list: List of confidence scores for each frame.
         """
-        # Remove duplicates in durationSet
-        durationSet = {1, 2, 3, 4, 5, 6}
+
 
         # ========== Load audio ==========
-        sample_rate, audio = wavfile.read(audio_file)
-        # if sample_rate != 16000:
-        #     self.logger.warning(f"Expected audio sample rate of 16000 Hz, but got {sample_rate} Hz.")
-        #     # Resample audio to 16000 Hz
-        #     audio = librosa.resample(audio.astype(float), sample_rate, 16000)
-        #     audio = audio.astype(np.int16)
-        #     sample_rate = 16000
+        _, audio = wavfile.read(audio_file)
 
         audioFeature = python_speech_features.mfcc(audio, 16000, numcep=13, winlen=0.025, winstep=0.010)
 
@@ -157,7 +150,6 @@ class TalkNetInstance:
                 self.logger.warning(f"Failed to read frame: {fname}. Skipping.")
                 continue
             face = cv2.cvtColor(frames, cv2.COLOR_BGR2GRAY)
-            # Ensure the cropping coordinates are within frame dimensions
             height, width = face.shape
             y_center, x_center = height // 2, width // 2
             half_size = 56  # Since 112/2 = 56
@@ -179,43 +171,29 @@ class TalkNetInstance:
             last_values = np.tile(audioFeature[-1:], (padding_len, 1))
             audioFeature = np.vstack((audioFeature, last_values))
         length = min((audioFeature.shape[0] // 100), (videoFeature.shape[0] // 25))
-        audioFeature = audioFeature[:int(length * 100), :]
-        videoFeature = videoFeature[:int(length * 25), :, :]
-        print(f'audioFeature length is {audioFeature.shape}')
-        print(f'Video Feature shape is {videoFeature.shape}')
-        allScore = []  # Evaluation use TalkNet
-        for duration in durationSet:
-            batchSize = int(math.ceil(length / duration))
-            scores = []
-            with torch.no_grad():
-                for i in range(batchSize):
-                    start_a = i * duration * 100
-                    end_a = (i + 1) * duration * 100
-                    start_v = i * duration * 25
-                    end_v = (i + 1) * duration * 25
+        if length != 1:
+            print(f'INFO: length found should have been 1 but found as {length}')
 
-                    inputA = torch.FloatTensor(audioFeature[start_a:end_a, :]).unsqueeze(0).to(self.device)
-                    inputV = torch.FloatTensor(videoFeature[start_v:end_v, :, :]).unsqueeze(0).to(self.device)
+        with torch.no_grad():
 
-                    embedA = self.talkNet.model.forward_audio_frontend(inputA)
-                    embedV = self.talkNet.model.forward_visual_frontend(inputV)
-                    embedA, embedV = self.talkNet.model.forward_cross_attention(embedA, embedV)
-                    out = self.talkNet.model.forward_audio_visual_backend(embedA, embedV)
-                    score = self.talkNet.lossAV.forward(out, labels=None)
-                    # print(f'score values is {score}')
-                    if isinstance(score, torch.Tensor):
-                        score = score.cpu().numpy()
-                    scores.extend(score)
-            # print(f'confidence score for this batch is {scores}')
-            allScore.append(scores)
+            inputA = torch.FloatTensor(audioFeature[0:100, :]).unsqueeze(0).to(self.device)
+            inputV = torch.FloatTensor(videoFeature[0:25, :, :]).unsqueeze(0).to(self.device)
 
-        allScore = np.array(allScore)
-        meanScores = np.mean(allScore, axis=0)
-        roundedScores = np.round(meanScores, 1).astype(float)
-        self.logger.debug("Aggregation of confidence scores completed.")
+            embedA = self.talkNet.model.forward_audio_frontend(inputA)
+            embedV = self.talkNet.model.forward_visual_frontend(inputV)
+            embedA, embedV = self.talkNet.model.forward_cross_attention(embedA, embedV)
+            out = self.talkNet.model.forward_audio_visual_backend(embedA, embedV)
+            score = self.talkNet.lossAV.forward(out, labels=None)
+            # print(f'score values is {score}')
+            if isinstance(score, torch.Tensor):
+                score = score.cpu().numpy()
+
+        roundedScores = np.round(score, 2).astype(float)
+
+        # print(f'roundedScores value is {roundedScores} and type is {type(roundedScores)}')
 
         return roundedScores
-
+    
     def loadParameters(self, path):
         """
         Loads pretrained parameters into the TalkNet model.
@@ -267,14 +245,8 @@ class POCTrackGenerator:
             exit(1)
 
         # Get video properties
-        self.video_fps = self.cap.get(cv2.CAP_PROP_FPS) # actual FPS is 30
-        # self.video_fps = 25 #temporary override
-        print(f'video fps is {self.cap.get(cv2.CAP_PROP_FPS)}')
-        # self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 25)
-        self.samples_per_frame = int(self.args.audio_rate / self.video_fps)  # 533 samples per frame
+        self.video_fps = self.cap.get(cv2.CAP_PROP_FPS)
 
-        # if self.video_fps != 25:
-        #     logger.warning(f'Video frame rate is {self.video_fps}, which is not equal to 25 FPS')
         self.frame_width = int(self.cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         self.frame_height = int(self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         logger.debug(f"Camera FPS: {self.video_fps}, Frame Size: {self.frame_width}x{self.frame_height}")
@@ -325,7 +297,7 @@ class POCTrackGenerator:
                                   channels=1,
                                   rate=args.audio_rate,
                                   input=True,
-                                  input_device_index=10,
+                                  input_device_index=3,
                                   frames_per_buffer=args.chunk_size)
         logger.info("Audio stream opened.")
 
