@@ -856,6 +856,7 @@ class POCTrackGenerator:
             start_frame_number += len(frames)
             if start_frame_number >= 3000:
                 self.processing_done = True
+                time.sleep(2)
                 print(f'*********Creating compiled audio******************')
                 combined_audio_dir = self.tmp_dir
                 combined_audio_segment_path = os.path.join(combined_audio_dir, 'compiled_audio.wav')
@@ -868,10 +869,28 @@ class POCTrackGenerator:
                         wf.setframerate(self.args.audio_rate)
                         wf.writeframes(audioCompiled)
                     logger.debug(f"Saved combined audio segment to {combined_audio_segment_path}.")
+
+                    print(f'Combining audio and annotated frames to generate video')
+                    annotated_frames_dir = os.path.join(self.tmp_dir, 'annotated_frames')
+                    video_output_path = os.path.join(self.tmp_dir, "annotated_video.mp4")
+                    # FFmpeg command with audio input
+                    ffmpeg_command = [
+                        "ffmpeg",
+                        "-y",  # Overwrite output file if it exists
+                        "-framerate", "30",  # Frame rate
+                        "-i", os.path.join(annotated_frames_dir, "annotated_frame_%06d.jpg"),  # Input frame pattern
+                        "-i", combined_audio_segment_path,  # Input audio file
+                        "-c:v", "libx264",  # Video codec
+                        "-c:a", "aac",  # Audio codec (adjust if needed)
+                        "-shortest",  # Stop encoding when shortest input ends (video or audio)
+                        video_output_path  # Output file
+                    ]                
+                    subprocess.run(ffmpeg_command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                    # subprocess.run(ffmpeg_command, check=True)
+
+                    logger.info(f"Annotated video with audio saved to {video_output_path}.")
                 except Exception as e:
-                    logger.error(f"Failed to save combined audio segment: {e}")
-
-
+                    logger.error(f"Failed to create annotated video: {e}")
     # ==================== MAIN ====================
 
 def main():
@@ -947,133 +966,6 @@ def main():
             logger.debug(f"Saved track information to {track_info_txt_path}.")
         except Exception as e:
             logger.error(f"Failed to save trackInfo.txt: {e}")
-
-        # ==================== Merge Audio Segments ====================
-
-        logger.info("Starting to assemble annotated frames into video...")
-
-        # Directory containing annotated frames
-        annotated_frames_dir = track_generator.annotated_frames_dir
-
-        # Collect all annotated frame paths
-        frame_paths = glob.glob(os.path.join(annotated_frames_dir, "annotated_frame_*.jpg"))
-        frame_paths.sort()
-        print(f'*********number of frames captured is {len(frame_paths)}*********')
-
-        if not frame_paths:
-            logger.error("No annotated frames found to assemble into video.")
-
-        else:
-            try:
-                # Output video path
-                video_output_path = os.path.join(args.tmp_dir, "annotated_video.mp4")
-
-                # FFmpeg command to create the video
-                ffmpeg_command = [
-                    "ffmpeg",
-                    "-y",
-                    "-framerate", "30",
-                    "-i", os.path.join(annotated_frames_dir, "annotated_frame_%06d.jpg"),
-                    "-c:v", "libx264",
-                    "-pix_fmt", "yuv420p",
-                    video_output_path
-                ]
-
-                # Run the command
-                subprocess.run(ffmpeg_command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
-                logger.info(f"Annotated video saved to {video_output_path}.")
-            except subprocess.CalledProcessError as e:
-                logger.error(f"FFmpeg failed to create video: {e}")
-            except Exception as e:
-                logger.error(f"An unexpected error occurred while creating the video: {e}")
-
-        if frame_paths:
-            logger.info("Combining merged audio with the annotated video...")
-
-            # Define paths
-            video_input_path = os.path.join(args.tmp_dir, "annotated_video.mp4")
-            final_output_path = os.path.join(args.tmp_dir, f"final_output_{track_generator.video_fps}_{track_generator.batch_size}.mp4")
-
-            try:
-                # Check durations of video and audio
-                combined_audio_segment_path = os.path.join(args.tmp_dir, 'compiled_audio.wav')
-                video_duration_command = [
-                    "ffprobe",
-                    "-v", "error",
-                    "-show_entries", "format=duration",
-                    "-of", "default=noprint_wrappers=1:nokey=1",
-                    video_input_path
-                ]
-                audio_duration_command = [
-                    "ffprobe",
-                    "-v", "error",
-                    "-show_entries", "format=duration",
-                    "-of", "default=noprint_wrappers=1:nokey=1",
-                    combined_audio_segment_path
-                ]
-                
-                video_duration = float(subprocess.check_output(video_duration_command).decode().strip())
-                audio_duration = float(subprocess.check_output(audio_duration_command).decode().strip())
-
-                # Match audio duration to video duration
-                if audio_duration > video_duration:
-                    logger.warning(f"Audio duration ({audio_duration}s) exceeds video duration ({video_duration}s). Trimming audio.")
-                    trimmed_audio_path = os.path.join(args.tmp_dir, "trimmed_audio.wav")
-                    ffmpeg_trim_audio_command = [
-                        "ffmpeg",
-                        "-y",
-                        "-i", combined_audio_segment_path,
-                        "-t", str(video_duration),
-                        "-c:a", "aac",
-                        trimmed_audio_path
-                    ]
-                    subprocess.run(ffmpeg_trim_audio_command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                    combined_audio_segment_path = trimmed_audio_path
-                elif audio_duration < video_duration:
-                    logger.warning(f"Audio duration ({audio_duration}s) is shorter than video duration ({video_duration}s). Adding silence.")
-                    padded_audio_path = os.path.join(args.tmp_dir, "padded_audio.wav")
-                    silence_duration = video_duration - audio_duration
-                    ffmpeg_pad_audio_command = [
-                        "ffmpeg",
-                        "-y",
-                        "-f", "lavfi",
-                        "-i", f"anullsrc=r=48000:cl=stereo",
-                        "-t", str(silence_duration),
-                        "-c:a", "aac",
-                        padded_audio_path
-                    ]
-                    # Concatenate original audio and silence
-                    ffmpeg_concat_audio_command = [
-                        "ffmpeg",
-                        "-y",
-                        "-i", f"concat:{combined_audio_segment_path}|{padded_audio_path}",
-                        "-c:a", "aac",
-                        combined_audio_segment_path
-                    ]
-                    subprocess.run(ffmpeg_pad_audio_command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                    subprocess.run(ffmpeg_concat_audio_command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
-                # Combine video and adjusted audio
-                ffmpeg_combine_command = [
-                    "ffmpeg",
-                    "-y",
-                    "-i", video_input_path,
-                    "-i", combined_audio_segment_path,
-                    "-c:v", "libx264",
-                    "-c:a", "aac",
-                    "-shortest",  # Ensure the output duration matches the shorter stream
-                    final_output_path
-                ]
-                subprocess.run(ffmpeg_combine_command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
-                logger.info(f"Final video with merged audio saved to {final_output_path}.")
-            except subprocess.CalledProcessError as e:
-                logger.error(f"Failed to combine video with merged audio: {e}")
-        else:
-            logger.warning("Skipping combining video with audio due to missing components.")
-
-
 
         # Stop audio capturing
         track_generator.stream.stop_stream()
