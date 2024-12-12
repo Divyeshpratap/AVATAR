@@ -131,10 +131,17 @@ class TalkNetInstance:
         Returns:
             list: List of confidence scores for each frame.
         """
-
+        # Remove duplicates in durationSet
+        durationSet = {1, 2, 3, 4, 5, 6}
 
         # ========== Load audio ==========
-        _, audio = wavfile.read(audio_file)
+        sample_rate, audio = wavfile.read(audio_file)
+        # if sample_rate != 16000:
+        #     self.logger.warning(f"Expected audio sample rate of 16000 Hz, but got {sample_rate} Hz.")
+        #     # Resample audio to 16000 Hz
+        #     audio = librosa.resample(audio.astype(float), sample_rate, 16000)
+        #     audio = audio.astype(np.int16)
+        #     sample_rate = 16000
 
         audioFeature = python_speech_features.mfcc(audio, 16000, numcep=13, winlen=0.025, winstep=0.010)
 
@@ -150,6 +157,7 @@ class TalkNetInstance:
                 self.logger.warning(f"Failed to read frame: {fname}. Skipping.")
                 continue
             face = cv2.cvtColor(frames, cv2.COLOR_BGR2GRAY)
+            # Ensure the cropping coordinates are within frame dimensions
             height, width = face.shape
             y_center, x_center = height // 2, width // 2
             half_size = 56  # Since 112/2 = 56
@@ -171,29 +179,43 @@ class TalkNetInstance:
             last_values = np.tile(audioFeature[-1:], (padding_len, 1))
             audioFeature = np.vstack((audioFeature, last_values))
         length = min((audioFeature.shape[0] // 100), (videoFeature.shape[0] // 25))
-        if length != 1:
-            print(f'INFO: length found should have been 1 but found as {length}')
+        audioFeature = audioFeature[:int(length * 100), :]
+        videoFeature = videoFeature[:int(length * 25), :, :]
+        print(f'audioFeature length is {audioFeature.shape}')
+        print(f'Video Feature shape is {videoFeature.shape}')
+        allScore = []  # Evaluation use TalkNet
+        for duration in durationSet:
+            batchSize = int(math.ceil(length / duration))
+            scores = []
+            with torch.no_grad():
+                for i in range(batchSize):
+                    start_a = i * duration * 100
+                    end_a = (i + 1) * duration * 100
+                    start_v = i * duration * 25
+                    end_v = (i + 1) * duration * 25
 
-        with torch.no_grad():
+                    inputA = torch.FloatTensor(audioFeature[start_a:end_a, :]).unsqueeze(0).to(self.device)
+                    inputV = torch.FloatTensor(videoFeature[start_v:end_v, :, :]).unsqueeze(0).to(self.device)
 
-            inputA = torch.FloatTensor(audioFeature[0:100, :]).unsqueeze(0).to(self.device)
-            inputV = torch.FloatTensor(videoFeature[0:25, :, :]).unsqueeze(0).to(self.device)
+                    embedA = self.talkNet.model.forward_audio_frontend(inputA)
+                    embedV = self.talkNet.model.forward_visual_frontend(inputV)
+                    embedA, embedV = self.talkNet.model.forward_cross_attention(embedA, embedV)
+                    out = self.talkNet.model.forward_audio_visual_backend(embedA, embedV)
+                    score = self.talkNet.lossAV.forward(out, labels=None)
+                    # print(f'score values is {score}')
+                    if isinstance(score, torch.Tensor):
+                        score = score.cpu().numpy()
+                    scores.extend(score)
+            # print(f'confidence score for this batch is {scores}')
+            allScore.append(scores)
 
-            embedA = self.talkNet.model.forward_audio_frontend(inputA)
-            embedV = self.talkNet.model.forward_visual_frontend(inputV)
-            embedA, embedV = self.talkNet.model.forward_cross_attention(embedA, embedV)
-            out = self.talkNet.model.forward_audio_visual_backend(embedA, embedV)
-            score = self.talkNet.lossAV.forward(out, labels=None)
-            # print(f'score values is {score}')
-            if isinstance(score, torch.Tensor):
-                score = score.cpu().numpy()
-
-        roundedScores = np.round(score, 2).astype(float)
-
-        # print(f'roundedScores value is {roundedScores} and type is {type(roundedScores)}')
+        allScore = np.array(allScore)
+        meanScores = np.mean(allScore, axis=0)
+        roundedScores = np.round(meanScores, 1).astype(float)
+        self.logger.debug("Aggregation of confidence scores completed.")
 
         return roundedScores
-    
+
     def loadParameters(self, path):
         """
         Loads pretrained parameters into the TalkNet model.
@@ -245,8 +267,14 @@ class POCTrackGenerator:
             exit(1)
 
         # Get video properties
-        self.video_fps = self.cap.get(cv2.CAP_PROP_FPS)
+        self.video_fps = self.cap.get(cv2.CAP_PROP_FPS) # actual FPS is 30
+        # self.video_fps = 25 #temporary override
+        print(f'video fps is {self.cap.get(cv2.CAP_PROP_FPS)}')
+        # self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 25)
+        self.samples_per_frame = int(self.args.audio_rate / self.video_fps)  # 533 samples per frame
 
+        # if self.video_fps != 25:
+        #     logger.warning(f'Video frame rate is {self.video_fps}, which is not equal to 25 FPS')
         self.frame_width = int(self.cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         self.frame_height = int(self.cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         logger.debug(f"Camera FPS: {self.video_fps}, Frame Size: {self.frame_width}x{self.frame_height}")
@@ -276,7 +304,7 @@ class POCTrackGenerator:
         self.processed_tracks = []  # List to hold all processed tracks
 
         # Batch size
-        self.batch_size = 30 # Number of frames per TalkNet evaluation
+        self.batch_size = args.clipped_video_len  # Number of frames per TalkNet evaluation
         self.kernel_size = args.kernel_size
         self.crop_scale = args.crop_scale
 
@@ -316,15 +344,17 @@ class POCTrackGenerator:
         Returns:
             List of bounding boxes [x_min, y_min, x_max, y_max, score].
         """
+        # Convert the frame from BGR (OpenCV) to RGB
         img = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
+        # Detect faces
         bboxes = self.s3fd.detect_faces(img, conf_th=0.7, scales=[0.25])
 
         detections = []
         if bboxes is not None:
             for bbox in bboxes:
-                x_min, y_min, x_max, y_max = bbox[:-1]
-                prob = bbox[-1]
+                x_min, y_min, x_max, y_max = bbox[:-1]  # Just the bounding box coordinates without confidence score
+                prob = bbox[-1]  # Extract confidence score
                 detections.append([x_min, y_min, x_max, y_max, prob])
         logger.debug(f"Detected {len(detections)} faces in current frame.")
         return detections
@@ -342,6 +372,7 @@ class POCTrackGenerator:
         Returns:
             dict: TalkNet scores and other relevant data.
         """
+        # logger.info(f"Running TalkNet for Track {track_id}...")
 
         # Save frames to a temporary directory
         temp_dir = os.path.join(self.tmp_dir, f'temp_track_{track_id}_{self.current_tracks[track_id]["sub_track_count"]}')
@@ -365,6 +396,7 @@ class POCTrackGenerator:
                 logger.warning(f"Cropped frame {idx} has zero size for Track {track_id}. Skipping.")
                 continue
 
+            # Resize to 224x224
             try:
                 cropped_frame = cv2.resize(cropped_frame, (224, 224))
             except Exception as e:
@@ -380,14 +412,16 @@ class POCTrackGenerator:
             cv2.imwrite(frame_filepath, cropped_frame)
 
         out.release()
+        # logger.debug(f"Saved cropped frames and video for Track {track_id}.")
 
+        # Run TalkNet evaluation using the pre-initialized instance
         try:
             conf_score = self.talkNet.evaluate(
                 frames_dir=cropped_frames_dir,
                 audio_file=audio_segment_path,
             )
-            # print(f'talkNet conf_score is {conf_score}')
-            # interpolation/ extrapolation to 30 fps because camera records at 30 while talknet evaluates at 25
+            print(f'talkNet conf_score is {conf_score}')
+            # interpolation to 30 fps because camera records at 30 while talknet evaluates at 25
             conf_score = np.interp(
                 np.linspace(0, len(conf_score) - 1, int(len(conf_score) * 30 / 25)),
                 np.arange(len(conf_score)),
@@ -397,6 +431,10 @@ class POCTrackGenerator:
             talkNet_results = {
                 'frame_confidences': conf_score.tolist(),
             }
+            print(f'talkNet_results is {talkNet_results}')
+            logger.debug(f'Number of confidence scores returned: {len(talkNet_results["frame_confidences"])}')
+            # logger.info(f"TalkNet evaluation completed for Track {track_id}.")
+
             return talkNet_results
 
         except Exception as e:
@@ -422,7 +460,7 @@ class POCTrackGenerator:
             frame_number_text = f"Frame {frame_number:06d}"
             text_position = (10, frame.shape[0] - 10)  # Bottom-left corner
             cv2.putText(frame, frame_number_text, text_position,
-                        cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0, 165, 255), 3)
+                        cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 3)
             cv2.imwrite(annotated_frame_path, frame)
             logger.debug(f"No detections for frame {frame_number}. Saved unannotated frame.")
             return frame
@@ -444,19 +482,23 @@ class POCTrackGenerator:
             green = int(scaled_conf)
             color = (0, green, red)  # BGR format
 
+            # Draw bounding box with increased thickness
             cv2.rectangle(frame, (x_min, y_min), (x_max, y_max), color, 4)
 
+            # Prepare text with increased font scale and thickness
             text = f"Track {track_num}, Conf {conf_score:.2f}"
+            # Calculate text size to adjust positioning
             (text_width, text_height), _ = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, 1.0, 3)
             text_position = (x_min, y_min - 10 if y_min - 10 > text_height else y_min + text_height + 10)
             cv2.putText(frame, text, text_position,
                         cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 3)
 
             frame_number_text = f"Frame {frame_number:06d}"
-            text_position = (10, frame.shape[0] - 10)
+            text_position = (10, frame.shape[0] - 10)  # Bottom-left corner
             cv2.putText(frame, frame_number_text, text_position,
                         cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0, 165, 255), 3)
 
+        # Save annotated frame
         annotated_frame_path = os.path.join(self.annotated_frames_dir, f'annotated_frame_{frame_number:06d}.jpg')
         cv2.imwrite(annotated_frame_path, frame)
         logger.debug(f"Annotated and saved frame {frame_number}.")
@@ -474,18 +516,22 @@ class POCTrackGenerator:
         Returns:
         - smoothed_bboxes: List of smoothed bounding boxes
         """
-        bboxes = np.array(bboxes)
+        bboxes = np.array(bboxes)  # Shape: (num_frames, 4)
 
-        x = (bboxes[:, 0] + bboxes[:, 2]) / 2
-        y = (bboxes[:, 1] + bboxes[:, 3]) / 2
+        # Calculate center coordinates
+        x = (bboxes[:, 0] + bboxes[:, 2]) / 2  # Center x
+        y = (bboxes[:, 1] + bboxes[:, 3]) / 2  # Center y
 
+        # Calculate size (s) as half of the maximum dimension
         s = np.maximum(bboxes[:, 2] - bboxes[:, 0],
-                       bboxes[:, 3] - bboxes[:, 1]) / 2
+                       bboxes[:, 3] - bboxes[:, 1]) / 2  # Size of the bounding box
 
+        # Apply median filter
         x_filtered = medfilt(x, kernel_size=kernel_size)
         y_filtered = medfilt(y, kernel_size=kernel_size)
         s_filtered = medfilt(s, kernel_size=kernel_size)
 
+        # Reconstruct smoothed bounding boxes
         smoothed_bboxes = []
         for xf, yf, sf in zip(x_filtered, y_filtered, s_filtered):
             padded_s = sf * (1 + 2 * crop_scale)
@@ -494,6 +540,7 @@ class POCTrackGenerator:
             x2 = xf + padded_s
             y2 = yf + padded_s
 
+            # Clamp the coordinates to frame boundaries
             x1 = max(x1, 0)
             y1 = max(y1, 0)
             x2 = min(x2, self.frame_width)
@@ -552,10 +599,18 @@ class POCTrackGenerator:
         frames = []
         chunk = 128
         total_frames = int(audio_rate / chunk * seconds)
+        startTime = datetime.now()
+        print(f'start Time at when batch number {batchNumber} audio capture started is {startTime}')
         for _ in range(total_frames):
             data = stream.read(chunk, exception_on_overflow=False)
+            # print(f'Audio data is {data}')
             frames.append(data)
+        # print(f'frames data after all 125 capture is {frames}')
+        endTime = datetime.now()
+        print(f'end Time at when batch number {batchNumber} audio capture finished is {endTime}')
+        print(f'Actual time taken to capture {total_frames} audio frames is {(endTime - startTime).total_seconds()} seconds')
         audio_data = b''.join(frames)
+        # print(f'audio data sent to audio queue is {audio_data}')
         return audio_data
 
     # Threading Functions (Video Producer) 
@@ -568,7 +623,9 @@ class POCTrackGenerator:
         Returns:
             Frames captured
         """
+        startTime = datetime.now()
         frames = []
+        print(f'Start Time at when batch number {batchNumber} video capture started is {startTime}')
         for i in range(frames_per_clip):
             ret, frame = cap.read()
             print(f'Current Frame number which is being captured is {(batchNumber-1)*30 + i}')
@@ -576,7 +633,9 @@ class POCTrackGenerator:
                 logging.error("Failed to read frame from camera.")
                 break
             frames.append(frame)
-
+        endTime = datetime.now()
+        print(f'end Time at when batch number {batchNumber} video capture finished is {endTime}')
+        print(f'Actual time taken to capture {frames_per_clip} video frames at {self.video_fps} is {(endTime - startTime).total_seconds()} seconds')
         return frames
 
     def capture_audio_wrapper(self, stream, frames_per_clip, audio_rate, batchNumber, output_queue):
@@ -593,7 +652,6 @@ class POCTrackGenerator:
         Continuously processes captured audio and video data from the processing_queue.
         Utilizes threading to perform TalkNet evaluations for multiple tracks in parallel.
         """
-        
         while True:
             try:
                 # Attempt to retrieve data from the processing queue without blocking
@@ -607,9 +665,9 @@ class POCTrackGenerator:
             if data is None:
                 logger.debug("Processing thread received sentinel. Exiting.")
                 break
-            startTimeOneBatch = datetime.now()
+
             frames, audio_data, start_frame_number = data
-            # audioCompiled += audio_data # This is just temporary for troubleshooting
+
             bboxes = []
             current_batch_tracked_objects = set()
             curr_frame_number = start_frame_number - 1  # Initialize to one less to start correctly
@@ -657,7 +715,7 @@ class POCTrackGenerator:
                         track_bboxes = self.current_tracks[track_id]['bboxes'][-self.batch_size:]
                         tracks_to_process.append((track_id, track_frames_numbers, track_bboxes))
 
-            # function to process each track in a separate thread, Need to put this outside process_data
+            # Define the function to process each track in a separate thread
             def process_track(track_id, track_frames_numbers, track_bboxes):
                 """
                 Processes a single track: smoothens bounding boxes, extracts frames, saves audio,
@@ -782,9 +840,6 @@ class POCTrackGenerator:
 
             # Update start_frame_number for the next batch
             start_frame_number = curr_frame_number + 1
-            endTimeOneBatch = datetime.now()
-            print(f'time taken to run one complete batch with {len(tracks_to_process)} faces is {(endTimeOneBatch - startTimeOneBatch).total_seconds()} seconds')
-
 
 
     def run(self):
@@ -800,7 +855,6 @@ class POCTrackGenerator:
         batchNumber = 0
         start_frame_number = 1
         startTime = datetime.now()
-        audioCompiled = b''
         while not self.processing_done:
             batchNumber += 1
             end_frame_number = start_frame_number
@@ -844,7 +898,7 @@ class POCTrackGenerator:
                 logger.warning("No audio data captured in this batch. Skipping processing.")
                 start_frame_number = end_frame_number
                 continue
-            audioCompiled += audio_data
+
             # Enqueue captured data for processing
             try:
                 self.processing_queue.put_nowait((frames, audio_data, start_frame_number))
@@ -856,21 +910,8 @@ class POCTrackGenerator:
             start_frame_number += len(frames)
             if start_frame_number >= 3000:
                 self.processing_done = True
-                print(f'*********Creating compiled audio******************')
-                combined_audio_dir = self.tmp_dir
-                combined_audio_segment_path = os.path.join(combined_audio_dir, 'compiled_audio.wav')
-
-                # Write audio data to WAV file using context manager
-                try:
-                    with wave.open(combined_audio_segment_path, 'wb') as wf:
-                        wf.setnchannels(self.args.channels)
-                        wf.setsampwidth(self.p.get_sample_size(self.args.audio_format))
-                        wf.setframerate(self.args.audio_rate)
-                        wf.writeframes(audioCompiled)
-                    logger.debug(f"Saved combined audio segment to {combined_audio_segment_path}.")
-                except Exception as e:
-                    logger.error(f"Failed to save combined audio segment: {e}")
-
+            endTime = datetime.now()
+        print(f'Actual time taken to run only the frames is {(endTime - startTime).total_seconds()} seconds')
 
     # ==================== MAIN ====================
 
@@ -879,6 +920,7 @@ def main():
     parser.add_argument('--talknet_model', type=str, required=True, help='Path to TalkNet model file')  # Made required
     parser.add_argument('--tmp_dir', type=str, default='tmp_poc', help='Temporary directory for processing')
     parser.add_argument('--detect_threshold', type=float, default=0.5, help='Detection confidence threshold (0-1)')
+    parser.add_argument('--clipped_video_len', type=int, default=500, help='Number of frames per TalkNet evaluation')
     parser.add_argument('--kernel_size', type=int, default=9, help='Kernel size for image smoothing')
     parser.add_argument('--crop_scale', type=float, default=0.25, help='Crop scale for face bounding box')
     parser.add_argument('--nDataLoaderThread', type=int, default=4, help='Number of threads for ffmpeg processing')
@@ -919,7 +961,7 @@ def main():
     except Exception as e:
         logger.exception(f"An unexpected error occurred: {e}")
     finally:
-        logger.info("Processing finished.")
+        # logger.info("Processing finished.")
 
         # Signal the display thread to terminate if it's still running
         if not track_generator.batch_queue.empty():
@@ -950,6 +992,36 @@ def main():
 
         # ==================== Merge Audio Segments ====================
 
+        logger.info("Starting to merge audio segments...")
+
+        # Path to save merged audio
+        merged_audio_path = os.path.join(track_generator.tmp_dir, "merged_audio.wav")
+
+        # Collect all audio segment paths
+        audio_segments = glob.glob(os.path.join(track_generator.tmp_dir, "track_*_subtrack_*/audio.wav"))
+        audio_segments.sort()  # Ensure consistent order
+
+        if not audio_segments:
+            logger.error("No audio segments found to merge.")
+            merged_audio = None
+        else:
+            try:
+                # Initialize an empty AudioSegment
+                merged_audio = AudioSegment.empty()
+
+                for segment_path in audio_segments:
+                    audio = AudioSegment.from_wav(segment_path)
+                    merged_audio += audio  # Concatenate audio segments
+
+                # Export merged audio
+                merged_audio.export(merged_audio_path, format="wav")
+                logger.info(f"Merged audio saved to {merged_audio_path}.")
+            except Exception as e:
+                logger.error(f"Failed to merge audio segments: {e}")
+                merged_audio = None
+
+        # ==================== Assemble Annotated Frames into Video ====================
+
         logger.info("Starting to assemble annotated frames into video...")
 
         # Directory containing annotated frames
@@ -957,7 +1029,7 @@ def main():
 
         # Collect all annotated frame paths
         frame_paths = glob.glob(os.path.join(annotated_frames_dir, "annotated_frame_*.jpg"))
-        frame_paths.sort()
+        frame_paths.sort()  # Ensure frames are in order
         print(f'*********number of frames captured is {len(frame_paths)}*********')
 
         if not frame_paths:
@@ -966,17 +1038,17 @@ def main():
         else:
             try:
                 # Output video path
-                video_output_path = os.path.join(args.tmp_dir, "annotated_video.mp4")
+                video_output_path = os.path.join(track_generator.tmp_dir, "annotated_video.mp4")
 
                 # FFmpeg command to create the video
                 ffmpeg_command = [
                     "ffmpeg",
-                    "-y",
-                    "-framerate", "30",
-                    "-i", os.path.join(annotated_frames_dir, "annotated_frame_%06d.jpg"),
-                    "-c:v", "libx264",
-                    "-pix_fmt", "yuv420p",
-                    video_output_path
+                    "-y",  # Overwrite output file if it exists
+                    "-framerate", "30",  # Frame rate
+                    "-i", os.path.join(annotated_frames_dir, "annotated_frame_%06d.jpg"),  # Input frame pattern
+                    "-c:v", "libx264",  # Video codec
+                    "-pix_fmt", "yuv420p",  # Pixel format for compatibility
+                    video_output_path  # Output file
                 ]
 
                 # Run the command
@@ -988,16 +1060,15 @@ def main():
             except Exception as e:
                 logger.error(f"An unexpected error occurred while creating the video: {e}")
 
-        if frame_paths:
+        if merged_audio and frame_paths:
             logger.info("Combining merged audio with the annotated video...")
 
             # Define paths
-            video_input_path = os.path.join(args.tmp_dir, "annotated_video.mp4")
-            final_output_path = os.path.join(args.tmp_dir, f"final_output_{track_generator.video_fps}_{track_generator.batch_size}.mp4")
+            video_input_path = os.path.join(track_generator.tmp_dir, "annotated_video.mp4")
+            final_output_path = os.path.join(track_generator.tmp_dir, f"final_output_{track_generator.video_fps}_{track_generator.batch_size}.mp4")
 
             try:
                 # Check durations of video and audio
-                combined_audio_segment_path = os.path.join(args.tmp_dir, 'compiled_audio.wav')
                 video_duration_command = [
                     "ffprobe",
                     "-v", "error",
@@ -1010,29 +1081,29 @@ def main():
                     "-v", "error",
                     "-show_entries", "format=duration",
                     "-of", "default=noprint_wrappers=1:nokey=1",
-                    combined_audio_segment_path
+                    merged_audio_path
                 ]
-                
+
                 video_duration = float(subprocess.check_output(video_duration_command).decode().strip())
                 audio_duration = float(subprocess.check_output(audio_duration_command).decode().strip())
 
                 # Match audio duration to video duration
                 if audio_duration > video_duration:
                     logger.warning(f"Audio duration ({audio_duration}s) exceeds video duration ({video_duration}s). Trimming audio.")
-                    trimmed_audio_path = os.path.join(args.tmp_dir, "trimmed_audio.wav")
+                    trimmed_audio_path = os.path.join(track_generator.tmp_dir, "trimmed_audio.wav")
                     ffmpeg_trim_audio_command = [
                         "ffmpeg",
                         "-y",
-                        "-i", combined_audio_segment_path,
+                        "-i", merged_audio_path,
                         "-t", str(video_duration),
                         "-c:a", "aac",
                         trimmed_audio_path
                     ]
                     subprocess.run(ffmpeg_trim_audio_command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                    combined_audio_segment_path = trimmed_audio_path
+                    merged_audio_path = trimmed_audio_path
                 elif audio_duration < video_duration:
                     logger.warning(f"Audio duration ({audio_duration}s) is shorter than video duration ({video_duration}s). Adding silence.")
-                    padded_audio_path = os.path.join(args.tmp_dir, "padded_audio.wav")
+                    padded_audio_path = os.path.join(track_generator.tmp_dir, "padded_audio.wav")
                     silence_duration = video_duration - audio_duration
                     ffmpeg_pad_audio_command = [
                         "ffmpeg",
@@ -1047,9 +1118,9 @@ def main():
                     ffmpeg_concat_audio_command = [
                         "ffmpeg",
                         "-y",
-                        "-i", f"concat:{combined_audio_segment_path}|{padded_audio_path}",
+                        "-i", f"concat:{merged_audio_path}|{padded_audio_path}",
                         "-c:a", "aac",
-                        combined_audio_segment_path
+                        merged_audio_path
                     ]
                     subprocess.run(ffmpeg_pad_audio_command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
                     subprocess.run(ffmpeg_concat_audio_command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -1059,7 +1130,7 @@ def main():
                     "ffmpeg",
                     "-y",
                     "-i", video_input_path,
-                    "-i", combined_audio_segment_path,
+                    "-i", merged_audio_path,
                     "-c:v", "libx264",
                     "-c:a", "aac",
                     "-shortest",  # Ensure the output duration matches the shorter stream
