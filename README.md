@@ -49,14 +49,52 @@ Note: The project is still in development. Please revisit for exciting future de
 ## Major Components
 
 flowchart LR
-    A[Live Webcam<br>(Video + Audio)] -->|Raw frames & samples| B[Capture Threads<br>(Video Thread + Audio Thread)]
-    B -->|Frames & Audio<br>(in batches)| C[Producer Queue]
+    %% Style adjustments (optional)
+    classDef block fill:#f9f9f9,stroke:#333,stroke-width:1px,color:#000,corner-radius:5px
+    
+    %% === INPUT ===
+    A[<b>Live Webcam</b><br/>(Video + Audio)]:::block
 
-    C -->|Batched Data| D[Processing Module<br><b>(Face Detection, Tracking, TalkNet Inference)</b>]
-    D -->|Annotated Frames,<br>Lip-Sync Scores| E[Consumer Queue<br>(for Display)]
-    D -->|Intermediate Files<br>(Cropped Frames, Audio Segments)| F[Temp Storage / File System]
-    E --> G[Display Thread<br>(Live Annotated Video)]
-    D -->|Final Stitching<br>(FFmpeg)| H[Final Annotated Video<br>(MP4, etc.)]
+    %% === CAPTURE / PRODUCER ===
+    subgraph Producer Threads
+    B[<b>Video Capture<br>Thread</b>]:::block
+    C[<b>Audio Capture<br>Thread</b>]:::block
+    end
+
+    D[<b>Producer Queue</b>]:::block
+
+    %% === PROCESSING ===
+    subgraph Processing Pipeline
+    E[<b>Face Detector<br>(S3FD)</b>]:::block
+    F[<b>Face Tracker<br>(Sort)</b>]:::block
+    G[<b>Lip-Sync Scoring<br>(TalkNet)</b>]:::block
+    H[<b>Frame Annotation</b><br/> (Bounding Boxes,<br/> Confidence, etc.)]:::block
+    end
+
+    I[<b>Consumer Queue</b>]:::block
+
+    %% === OUTPUT / DISPLAY ===
+    subgraph Output
+    J[<b>Display Thread</b><br/>(Live Annotated Video)]:::block
+    K[<b>FFmpeg Merge</b><br/>(Final MP4)]:::block
+    L[<b>Final Annotated Video</b>]:::block
+    end
+
+    %% === FLOWS ===
+    A --> B
+    A --> C
+    B --> D
+    C --> D
+
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+
+    I --> J
+    I --> K
+    K --> L
 
 
 1. **Sliding Window Real-Time Localization:**
