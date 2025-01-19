@@ -172,17 +172,11 @@ AVATAR employs a **Producer-Consumer** model using multi-threading to achieve re
 
 ## Installation
 
-### Prerequisites
-
-- **Python Version:** Python 3.7 or higher.
-- **CUDA:** (Optional) NVIDIA GPU with CUDA support for accelerated processing.
-
-
 ### Clone the Repository
 
 ```bash
 https://github.com/Divyeshpratap/AVATAR.git
-cd avatar
+cd AVATAR
 ```
 
 ### Demo
@@ -190,7 +184,7 @@ cd avatar
 Run the script using the below command
 
 ```bash
-python talkNetLive.py --video_path input/<videoname.mp4/avi> --tmp_dir output/<projectName> --clipped_video_len 50 --talknet_model pretrain_TalkSet.model
+python detectSpeakers.py --tmp_dir output/<projectName> --talknet_model pretrain_TalkSet.model
 ```
 
 ## License
