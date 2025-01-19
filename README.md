@@ -46,9 +46,18 @@ Note: The project is still in development. Please revisit for exciting future de
 - **Sliding Window Mechanism:** Processes frames in a sliding window to achieve real-time near active speaker localization.
 - **Extensible Architecture:** Designed to incorporate additional features like real-time diarization in the future.
 
-## Innovative Aspects
+## Major Components
 
-AVATAR introduces several innovations in the field of audio-visual processing:
+flowchart LR
+    A[Live Webcam<br>(Video + Audio)] -->|Raw frames & samples| B[Capture Threads<br>(Video Thread + Audio Thread)]
+    B -->|Frames & Audio<br>(in batches)| C[Producer Queue]
+
+    C -->|Batched Data| D[Processing Module<br><b>(Face Detection, Tracking, TalkNet Inference)</b>]
+    D -->|Annotated Frames,<br>Lip-Sync Scores| E[Consumer Queue<br>(for Display)]
+    D -->|Intermediate Files<br>(Cropped Frames, Audio Segments)| F[Temp Storage / File System]
+    E --> G[Display Thread<br>(Live Annotated Video)]
+    D -->|Final Stitching<br>(FFmpeg)| H[Final Annotated Video<br>(MP4, etc.)]
+
 
 1. **Sliding Window Real-Time Localization:**
    - **First of Its Kind:** AVATAR is the first system to implement a sliding window mechanism for real-time near active speaker localization, enabling continuous and efficient processing of streaming data.
