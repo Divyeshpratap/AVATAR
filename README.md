@@ -4,6 +4,14 @@
 
 AVATAR is a near real-time active speaker detection system that continuously captures frames from your camera, detects and tracks multiple faces, evaluates their lip-sync accuracy using TalkNet, and annotates the video stream in real time. Its design combines an efficient producer-consumer pipeline, multi-threading, and single-initialization batch processing to ensure smooth performance and scalability.
 
+## DEMO
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/af9571b2-113a-4d4c-a12e-00f08d8ffcfa" controls width="75%">
+    Your browser does not support the video tag.
+  </video>
+  <p><i>Acrive Speaker Detection Demo</i></p>
+</div>
+
 ## Table of Contents
 
 1. [Introduction](#introduction)  
