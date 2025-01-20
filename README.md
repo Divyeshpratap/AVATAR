@@ -22,16 +22,12 @@ AVATAR is a near real-time active speaker detection system that continuously cap
 ## Table of Contents
 
 1. [Introduction](#introduction)  
-2. [What's New](#whats-new)  
-3. [Key Features](#key-features)  
-4. [How It Works (High-Level Overview)](#how-it-works-high-level-overview)  
-5. [System Architecture](#system-architecture)  
-   - [Real-Time Producer-Consumer Model](#real-time-producer-consumer-model)  
-   - [Lip-Sync Evaluation with TalkNet](#lip-sync-evaluation-with-talknet)  
-6. [Installation](#installation)  
-7. [Usage](#usage)  
-10. [License](#license)  
-11. [Acknowledgements](#acknowledgements)
+2. [Key Features](#key-features)  
+3. [Major Steps)](#major-steps)  
+4. [Installation](#installation)  
+5. [Usage](#usage)  
+6. [License](#license)  
+7. [Acknowledgements](#acknowledgements)
 
 ---
 
@@ -39,20 +35,19 @@ AVATAR is a near real-time active speaker detection system that continuously cap
 
 **AVATAR** (Audio-Visual Active Tracking and Annotation Rendering) is designed for live camera input or saved videos, allowing you to automatically detect, track, and evaluate multiple people’s lip-sync accuracy. The results are shown via bounding boxes and confidence scores, overlaid in real time on the video stream.
 
-This pipeline is a starting point for advanced audio-visual understanding tasks such as speaker diarization, content creation tools, or live-stream moderation. Some of the applications of the project are:
-1. Annotating which person spoke which sentence in a multi speaker meeting scenario. This can be useful to generate speaker specific Minutes of Meeting.
-2. Speaker Source separation.
-3. Identifying the contribution of a speaker in a meeting.
-4. 
+This pipeline serves as a foundation for advanced audio-visual understanding tasks such as speaker diarization, content creation tools, or live-stream moderation. Some of the applications of the project are:
+1. **Annotating Who Said What in Meetings**: Automatically tag each utterance in a multi-speaker meeting, making it easier to generate speaker-specific minutes of meeting or transcripts.
+2. **Speaker Source separation**: In complex audio environments where multiple people talk simultaneously, the system can help isolate or label each speaker’s audio track.
+3. **Interactive Learning or Tele-Education**: In virtual classrooms, highlight the student currently speaking, or track group discussions to get speaker contribution metrics.
+4. **Subtitle or Caption Automation**: Integrate with real-time transcription services to automatically generate speaker-attributed subtitles, useful for online lectures, panels, or conferences.
 
 ---
-
 
 ## Key Features
 
 - **Live Camera Integration**: Captures video (and audio via PyAudio) from your webcam.
-- **Multi-Face Detection & Tracking**: Employs S3FD for face detection and SORT for ID-based tracking across frames.
-- **Active Speaker Identification**: Uses TalkNet to generate lip-sync scores, to determine who is speaking in each frame.
+- **Multi-Face Detection & Tracking**: Employs [S3FD](https://github.com/sfzhang15/SFD) for face detection and [SORT](https://github.com/abewley/sort) for ID-based tracking across frames.
+- **Active Speaker Identification**: Uses [TalkNet](https://github.com/TaoRuijie/TalkNet-ASD) to generate lip-sync scores, to determine who is speaking in each frame.
 - **Real-Time Annotations**: Bounding boxes with color-coded confidence scores are rendered on each frame, displayed in a dedicated OpenCV window.
 - **Producer-Consumer with Threads**: Producer thread handles processing (face detection and tracking, lip-sync evaluation), consumer handles visualization to avoid pipeline bottlenecks. Lip-sync evaluation dynamically allocates threads based on number of speakers identified to speed up ML inferencing.
 
@@ -78,21 +73,6 @@ This pipeline is a starting point for advanced audio-visual understanding tasks 
 
 5. **Repeat steps 1 to 4**
 ---
-
-## System Architecture
-
-### Real-Time Producer-Consumer Model
-
-- **Producer** (Main/Processing Thread):  
-  - Reads frames from the camera in batches.  
-  - Runs S3FD face detection and SORT tracking.  
-  - Performs TalkNet lip-sync evaluation.  
-  - Annotates each frame and enqueues them for display.
-
-- **Consumer** (Display Thread):  
-  - Dequeues and displays annotated frames in an OpenCV window.  
-  - Prevents the main pipeline from stalling due to visualization delays.
-
 
 ## Installation
 
