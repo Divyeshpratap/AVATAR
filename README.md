@@ -6,7 +6,7 @@ AVATAR is a near real-time active speaker detection system that continuously cap
 
 ## DEMO
 <div align="center">
-  <video src="https://github.com/user-attachments/assets/af9571b2-113a-4d4c-a12e-00f08d8ffcfa" controls width="75%">
+  <video src="https://github.com/user-attachments/assets/af9571b2-113a-4d4c-a12e-00f08d8ffcfa" controls width="50%">
     Your browser does not support the video tag.
   </video>
   <p><i>Acrive Speaker Detection Demo</i></p>
