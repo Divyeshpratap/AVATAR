@@ -15,10 +15,9 @@ AVATAR is a near real-time active speaker detection system that continuously cap
 ## High Level System Architecture:
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/1d2196c5-b23c-457a-8cbc-00f5f8d2e160" alt="Inferencing Architecture" width="100%">
+  <img src="https://github.com/user-attachments/assets/4386602c-c44f-4dd6-918d-df33c2089b8a" alt="Inferencing Architecture" width="100%">
   <p><i>Model Inferencing Architecture</i></p>
 </div>
-
 
 ## Table of Contents
 
