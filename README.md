@@ -30,8 +30,6 @@ AVATAR is a near real-time active speaker detection system that continuously cap
    - [Lip-Sync Evaluation with TalkNet](#lip-sync-evaluation-with-talknet)  
 6. [Installation](#installation)  
 7. [Usage](#usage)  
-8. [Output](#output)  
-9. [Dependencies](#dependencies)  
 10. [License](#license)  
 11. [Acknowledgements](#acknowledgements)
 
@@ -103,9 +101,9 @@ This pipeline is a starting point for advanced audio-visual understanding tasks 
    git clone https://github.com/YourUsername/AVATAR.git
    cd AVATAR
 
-### Demo
+### Usage
 
-Run the script using the below command
+Run the inferencing script using the below command
 
 ```bash
 python detectSpeakers.py --tmp_dir output/<projectName> --talknet_model pretrain_TalkSet.model
