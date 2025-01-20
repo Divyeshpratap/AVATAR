@@ -2,14 +2,14 @@
 
 **Audio-Visual Active Tracking and Annotation Rendering**
 
-AVATAR is a near real-time active speaker detection system that continuously captures frames from your camera, detects and tracks multiple faces, evaluates their lip-sync accuracy using TalkNet, and annotates the video stream in real time. Its design combines an efficient producer-consumer pipeline, multi-threading, and single-initialization batch processing to ensure smooth performance and scalability.
+AVATAR is a near real-time active speaker detection system that continuously captures frames from your camera, detects and tracks multiple faces, evaluates their lip-sync accuracy using TalkNet, and annotates the video stream in real time with the active speaker. The design combines an efficient producer-consumer pipeline, and multi-threading to ensure video capture, active speaker localization, and frame rendering can be performed simultaneously.
 
 ## DEMO
 <div align="center">
   <video src="https://github.com/user-attachments/assets/af9571b2-113a-4d4c-a12e-00f08d8ffcfa" controls width="50%">
     Your browser does not support the video tag.
   </video>
-  <p><i>Acrive Speaker Detection Demo</i></p>
+  <p><i>Active Speaker Localization Demo</i></p>
 </div>
 
 ## High Level System Architecture:
@@ -41,37 +41,31 @@ AVATAR is a near real-time active speaker detection system that continuously cap
 
 **AVATAR** (Audio-Visual Active Tracking and Annotation Rendering) is designed for live camera input or saved videos, allowing you to automatically detect, track, and evaluate multiple people’s lip-sync accuracy. The results are shown via bounding boxes and confidence scores, overlaid in real time on the video stream.
 
-This pipeline can be a starting point for advanced audio-visual understanding tasks such as speaker diarization, content creation tools, or live-stream moderation. If you are working in an area where identifying who is speaking is key, this project provides a solid, extensible foundation.
+This pipeline is a starting point for advanced audio-visual understanding tasks such as speaker diarization, content creation tools, or live-stream moderation. Some of the applications of the project are:
+1. Annotating which person spoke which sentence in a multi speaker meeting scenario. This can be useful to generate speaker specific Minutes of Meeting.
+2. Speaker Source separation.
+3. Identifying the contribution of a speaker in a meeting.
+4. 
 
 ---
 
-## What's New
-
-- **S3FD Face Detection**: Switched from MTCNN to [S3FD](https://github.com/sfzhang15/SFD) for robust, real-time face detection.
-- **SORT Tracking**: Integrated [SORT](https://github.com/abewley/sort) for lightweight, accurate multi-face tracking.
-- **Single TalkNet Initialization**: The TalkNet model is loaded only once, reducing overhead in lip-sync scoring.
-- **Real-Time Camera Capture**: The system now supports direct camera input (`cv2.VideoCapture(0)`).
-- **Multi-Threaded Visualization**: A dedicated thread fetches annotated frames from a queue and displays them in real time.
-- **Batch-Based Processing**: Frames and audio are processed in fixed-sized batches (e.g., 30 frames), balancing responsiveness with efficiency.
-
----
 
 ## Key Features
 
-- **Live Camera Integration**: Captures video (and audio via PyAudio) straight from your webcam.
-- **Active Speaker Identification**: Uses TalkNet to generate lip-sync scores, helping determine who is speaking in each frame.
+- **Live Camera Integration**: Captures video (and audio via PyAudio) from your webcam.
 - **Multi-Face Detection & Tracking**: Employs S3FD for face detection and SORT for ID-based tracking across frames.
+- **Active Speaker Identification**: Uses TalkNet to generate lip-sync scores, to determine who is speaking in each frame.
 - **Real-Time Annotations**: Bounding boxes with color-coded confidence scores are rendered on each frame, displayed in a dedicated OpenCV window.
-- **Producer-Consumer with Threads**: One thread handles processing (face detection, lip-sync evaluation), another handles visualization to avoid pipeline bottlenecks.
-- **Flexible Configuration**: User-defined arguments for detection thresholds, bounding-box smoothing, batch size, and audio parameters.
+- **Producer-Consumer with Threads**: Producer thread handles processing (face detection and tracking, lip-sync evaluation), consumer handles visualization to avoid pipeline bottlenecks. Lip-sync evaluation dynamically allocates threads based on number of speakers identified to speed up ML inferencing.
 
 ---
 
-## How It Works (High-Level Overview)
+## Major Steps
 
 1. **Capture Audio and Video**  
-   - Frames are read in batches (e.g., 30 frames each) from your webcam.  
-   - Corresponding audio chunks are captured via PyAudio.
+   - Frames are read in batches (currently 30 frames each at 30fps) from your webcam.  
+   - Corresponding audio chunks (at 16 kHz) are captured via PyAudio.
+   - Both thread data is joined for synchronization.
 
 2. **Face Detection & Tracking**  
    - S3FD locates faces in each frame.  
@@ -81,12 +75,10 @@ This pipeline can be a starting point for advanced audio-visual understanding ta
    - TalkNet evaluates each tracked face’s lip movements against captured audio, returning a score representing lip-sync accuracy.
 
 4. **Annotation & Display**  
-   - Bounding boxes are drawn around faces with color-coded confidence.  
+   - Bounding boxes are drawn around faces with color-coded confidence scores from talkNet.  
    - An OpenCV window renders these annotated frames in real time.
 
-5. **Batch Cleanup & Logging**  
-   - Processed data (frames, audio segments) are saved or cleared, and logs capture any warnings or performance metrics.
-
+5. **Repeat steps 1 to 4**
 ---
 
 ## System Architecture
@@ -103,17 +95,6 @@ This pipeline can be a starting point for advanced audio-visual understanding ta
   - Dequeues and displays annotated frames in an OpenCV window.  
   - Prevents the main pipeline from stalling due to visualization delays.
 
-### Lip-Sync Evaluation with TalkNet
-
-- **TalkNetInstance** Class:  
-  - Loads the pre-trained TalkNet model once (GPU or CPU).  
-  - Extracts audio features (MFCC) and video features (face crops).  
-  - Generates lip-sync confidence scores for frames in each batch.
-
-- **Single Initialization**:  
-  - TalkNet is loaded at startup, significantly cutting down on repetitive overhead.
-
----
 
 ## Installation
 
