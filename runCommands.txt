@@ -1,1 +1,0 @@
-python cameraRealTime.py --tmp_dir output/<folderName> --clipped_video_len 30 --talknet_model pretrain_TalkSet.model
