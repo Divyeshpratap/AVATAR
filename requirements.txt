@@ -1,0 +1,9 @@
+torch>=1.8.0
+torchvision>=0.9.0
+numpy
+opencv-python
+pyaudio
+scipy
+python_speech_features
+insightface
+onnxruntime-gpu
