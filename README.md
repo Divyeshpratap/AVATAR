@@ -11,9 +11,6 @@ AVATAR is a near real-time active speaker detection system that streams camera f
   <p><i>Active Speaker Localization Demo</i></p>
 </div>
 
-<-- https://github.com/user-attachments/assets/af9571b2-113a-4d4c-a12e-00f08d8ffcfa -->
-https://github.com/user-attachments/assets/f128a7c6-0c29-4907-a283-0d54183a2bd8
-
 ## High Level System Architecture:
 
 <div align="center">
