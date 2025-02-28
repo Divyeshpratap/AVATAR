@@ -22,11 +22,11 @@ AVATAR is a near real-time active speaker detection system that streams camera f
 
 1. [Introduction](#introduction)  
 2. [Key Features](#key-features)  
-3. [Major Steps)](#major-steps)  
+3. [Major Steps](#major-steps)  
 4. [Installation](#installation)  
 5. [Usage](#usage)  
 6. [License](#license)  
-7. [Acknowledgements](#acknowledgements)
+7. [Acknowledgements](#acknowledgement)
 
 ---
 
@@ -156,8 +156,9 @@ Run the inferencing script using the below command
 ```bash
 python detectSpeakers.py --tmp_dir output/<projectName>
 ```
+If you do not want face masking, pass the argument "--no_face_masking"
 
-
+(The code has been tested with the following system environment: Ubuntu 22.04.05 LTS, CUDA 12.2, cuDNN 9.7.1, Python 3.9, PyTorch 1.12.1+cu118, torchvision 0.15.2, onnxruntime-gpu 1.19.2, numpy 1.24.3, opencv 4.11.0.86)
 
 ## License
 This repository is private and intended solely for Center for Unified Biometrics and Sensors Lab (University at Buffalo) use. Unauthorized reproduction, distribution, or commercial use of this code is prohibited.
