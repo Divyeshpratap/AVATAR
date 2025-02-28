@@ -85,7 +85,7 @@ AVATAR is a near real-time active speaker detection system that streams camera f
    cd AVATAR
 
 ### Directory Structure
-
+```
 ${ROOT} 
 ├── detectSpeakers.py          # Entry point
 ├── face                       # Face detection and recognition scripts
@@ -116,7 +116,7 @@ ${ROOT}
 └── weights                    # LipSync Model Weights
     ├── pretrain_AVA.model
     └── pretrain_TalkSet.model
-
+```
 
 
 ### Usage
