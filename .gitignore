@@ -1,1 +1,4 @@
 output/
+# Ignore all __pycache__ directories and compiled python files
+**/__pycache__/
+**/*.pyc

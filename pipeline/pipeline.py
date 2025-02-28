@@ -28,6 +28,7 @@ class TrackGenerator:
         else:
             self.logger.info('Using CPU for processing inside trackGenerator')
         self.tmp_dir = args.tmp_dir
+        self.face_masking = args.face_masking
         self.window_size = 30  # Fixed parameter
         self.max_unrecognized_frames = 15 
         self.kernel_size = args.kernel_size
@@ -108,10 +109,8 @@ class TrackGenerator:
             audio_segment_path = None
         if audio_segment_path and os.path.exists(audio_segment_path):
             start_time_eval = datetime.now()
-            # Note: In this example, the cropped frames directory is assumed to be inside the audio_dir.
             cropped_frames_dir = os.path.join(audio_dir, 'cropped_frames')
             os.makedirs(cropped_frames_dir, exist_ok=True)
-            # Save cropped frames.
             fourcc = cv2.VideoWriter_fourcc(*'XVID')
             video_filepath = os.path.join(audio_dir, 'cropped_video.avi')
             out = cv2.VideoWriter(video_filepath, fourcc, self.video_fps, (224, 224))
@@ -204,29 +203,30 @@ class TrackGenerator:
                         self.logger.info(f"Track {track_id} did not yield a recognized label; skipping TalkNet evaluation.")
                 else:
                     self.logger.info(f"Track {track_id}: insufficient detections for interpolation. Skipping TalkNet evaluation.")
-            for track_id in current_batch_tracked_objects:
-                if 'label' not in self.current_tracks[track_id] or self.current_tracks[track_id].get('label', "Unknown") == "Unknown":
-                    for frame_num in range(start_frame_number, curr_frame_number + 1):
-                        bbox = self.current_tracks[track_id]['bboxes2'].get(frame_num)
-                        if bbox:
-                            frame_idx = frame_num - start_frame_number
-                            if 0 <= frame_idx < len(frames):
-                                frame = frames[frame_idx]
-                                x1, y1, x2, y2 = map(int, bbox)
-                                w = x2 - x1
-                                h = y2 - y1
-                                pad_w = int(self.face_pad_scale * w)
-                                pad_h = int(self.face_pad_scale * h)
-                                new_x1 = int(max(0, x1 - pad_w))
-                                new_y1 = int(max(0, y1 - pad_h))
-                                new_x2 = int(min(self.frame_width, x2 + pad_w))
-                                new_y2 = int(min(self.frame_height, y2 + pad_h))
-                                roi = frame[new_y1:new_y2, new_x1:new_x2]
-                                if roi.size != 0:
-                                    kernel_size = (self.mask_blur_kernel, self.mask_blur_kernel)
-                                    blurred_roi = cv2.GaussianBlur(roi, kernel_size, 0)
-                                    frame[new_y1:new_y2, new_x1:new_x2] = blurred_roi
-                                frames[frame_idx] = frame
+            if self.face_masking:
+                for track_id in current_batch_tracked_objects:
+                    if 'label' not in self.current_tracks[track_id] or self.current_tracks[track_id].get('label', "Unknown") == "Unknown":
+                        for frame_num in range(start_frame_number, curr_frame_number + 1):
+                            bbox = self.current_tracks[track_id]['bboxes2'].get(frame_num)
+                            if bbox:
+                                frame_idx = frame_num - start_frame_number
+                                if 0 <= frame_idx < len(frames):
+                                    frame = frames[frame_idx]
+                                    x1, y1, x2, y2 = map(int, bbox)
+                                    w = x2 - x1
+                                    h = y2 - y1
+                                    pad_w = int(self.face_pad_scale * w)
+                                    pad_h = int(self.face_pad_scale * h)
+                                    new_x1 = int(max(0, x1 - pad_w))
+                                    new_y1 = int(max(0, y1 - pad_h))
+                                    new_x2 = int(min(self.frame_width, x2 + pad_w))
+                                    new_y2 = int(min(self.frame_height, y2 + pad_h))
+                                    roi = frame[new_y1:new_y2, new_x1:new_x2]
+                                    if roi.size != 0:
+                                        kernel_size = (self.mask_blur_kernel, self.mask_blur_kernel)
+                                        blurred_roi = cv2.GaussianBlur(roi, kernel_size, 0)
+                                        frame[new_y1:new_y2, new_x1:new_x2] = blurred_roi
+                                    frames[frame_idx] = frame
             for idx, frame in enumerate(frames):
                 frame_number = start_frame_number + idx
                 frame_filename = os.path.join(self.all_frames_dir, f'frame_{frame_number:06d}.jpg')

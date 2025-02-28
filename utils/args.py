@@ -9,6 +9,10 @@ def parse_args():
     parser.add_argument('--talknet_model', type=str, default="weights/pretrain_AVA.model", 
                         help='Path to the pretrained TalkNet model file')
 
+    parser.add_argument('--face_masking', action='store_true', help='Enable face masking')
+    parser.add_argument('--no_face_masking', action='store_false', dest='face_masking', help='Disable face masking')
+    parser.set_defaults(face_masking=True)
+
     parser.add_argument('--registered_faces', type=str, default="registeredFaces", 
                         help='Path to the pretrained TalkNet model file')
 
