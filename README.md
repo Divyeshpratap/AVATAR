@@ -79,16 +79,16 @@ AVATAR is a near real-time active speaker detection system that streams camera f
 ## Installation
 
 1. Clone the Repository
-   ```bash
-   git clone https://github.com/Divyeshpratap/AVATAR.git
-   pip install -r requirements.txt
-   cd AVATAR
+ ```bash
+ git clone https://github.com/Divyeshpratap/AVATAR.git
+ pip install -r requirements.txt
+ cd AVATAR
    
 2. Setup the environment.
-  ```bash
-  conda create -n avlocalizer python=3.9 -y
-  conda activate avlocalizer
-  ```
+```bash
+conda create -n avlocalizer python=3.9 -y
+conda activate avlocalizer
+```
 
 Install [ffmpeg](https://ffmpeg.org/) on your system.
 ```bash
@@ -100,17 +100,18 @@ sudo pacman -S ffmpeg
 
 # on MacOS using Homebrew (https://brew.sh/)
 brew install ffmpeg
-
 ```
+
 InsightFace requires [onnx](https://pypi.org/project/onnxruntime-gpu/) installation for gpu-acceleration which requires the following dependencies. Please install these before onnx installation.
 ```bash
 sudo apt-get update
 sudo apt-get install libgtk2.0-dev pkg-config
+```
 
 3. Install Python Packages
-  ```bash
-  pip install -r requirements.txt
-  ```
+```bash
+pip install -r requirements.txt
+```
 
 
 ### Directory Structure
@@ -154,7 +155,6 @@ Run the inferencing script using the below command
 
 ```bash
 python detectSpeakers.py --tmp_dir output/<projectName>
-pip install -r requirements.txt
 ```
 
 
