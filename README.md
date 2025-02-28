@@ -81,7 +81,6 @@ AVATAR is a near real-time active speaker detection system that streams camera f
 1. Clone the Repository
  ```bash
  git clone https://github.com/Divyeshpratap/AVATAR.git
- pip install -r requirements.txt
  cd AVATAR
 ```
    
