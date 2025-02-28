@@ -83,6 +83,7 @@ AVATAR is a near real-time active speaker detection system that streams camera f
  git clone https://github.com/Divyeshpratap/AVATAR.git
  pip install -r requirements.txt
  cd AVATAR
+```
    
 2. Setup the environment.
 ```bash
@@ -112,7 +113,6 @@ sudo apt-get install libgtk2.0-dev pkg-config
 ```bash
 pip install -r requirements.txt
 ```
-
 
 ### Directory Structure
 ```
@@ -148,7 +148,6 @@ ${ROOT}
     └── pretrain_TalkSet.model
 ```
 
-
 ### Usage
 
 Run the inferencing script using the below command
@@ -162,7 +161,6 @@ If you do not want face masking, pass the argument "--no_face_masking"
 
 ## License
 This repository is private and intended solely for Center for Unified Biometrics and Sensors Lab (University at Buffalo) use. Unauthorized reproduction, distribution, or commercial use of this code is prohibited.
-
 
 ## Acknowledgment
 This project adopts trained ASD model from [TalkNet-ASD](https://github.com/TaoRuijie/TalkNet-ASD), face detection from [S3FD](https://github.com/sfzhang15/SFD), face recognition from [Insightface](https://github.com/deepinsight/insightface), and tracking code from [SORT](https://github.com/abewley/sort) 
