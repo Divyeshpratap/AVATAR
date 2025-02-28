@@ -1,0 +1,12 @@
+--index-url https://download.pytorch.org/whl/cu118
+torch
+torchvision
+torchaudio
+
+numpy
+opencv-python
+pyaudio
+scipy
+python_speech_features
+insightface
+onnxruntime-gpu
