@@ -48,7 +48,7 @@ class TrackGenerator:
         os.makedirs(self.all_frames_dir, exist_ok=True)
         os.makedirs(self.annotated_frames_dir, exist_ok=True)
 
-        self.cap = cv2.VideoCapture(0)
+        self.cap = cv2.VideoCapture(1)
         if not self.cap.isOpened():
             self.logger.error("Cannot open camera.")
             exit(1)
@@ -195,12 +195,20 @@ class TrackGenerator:
                     assigned_label = get_track_label(continuous_frames, filled_bboxes, frames, start_frame_number,
                                                      self.face_pad_scale, self.frame_width, self.frame_height,
                                                      self.face_app, lambda emb: recognize_face(emb, self.face_database))
-                    if assigned_label is not None:
-                        self.current_tracks[track_id]['label'] = assigned_label
-                        tracks_to_process.append((track_id, continuous_frames, filled_bboxes, assigned_label))
-                    else:
-                        self.current_tracks[track_id]['label'] = 'Unknown'
-                        self.logger.info(f"Track {track_id} did not yield a recognized label; skipping TalkNet evaluation.")
+                    if self.face_masking:
+                        if assigned_label is not None:
+                            self.current_tracks[track_id]['label'] = assigned_label
+                            tracks_to_process.append((track_id, continuous_frames, filled_bboxes, assigned_label))
+                        else:
+                            self.current_tracks[track_id]['label'] = 'Unknown'
+                            self.logger.info(f"Track {track_id} did not yield a recognized label; skipping TalkNet evaluation.")
+                    elif not self.face_masking:
+                        if assigned_label is not None:
+                            self.current_tracks[track_id]['label'] = assigned_label
+                            tracks_to_process.append((track_id, continuous_frames, filled_bboxes, assigned_label))
+                        else:
+                            self.current_tracks[track_id]['label'] = 'Unknown'
+                            tracks_to_process.append((track_id, continuous_frames, filled_bboxes, assigned_label))
                 else:
                     self.logger.info(f"Track {track_id}: insufficient detections for interpolation. Skipping TalkNet evaluation.")
             if self.face_masking:
