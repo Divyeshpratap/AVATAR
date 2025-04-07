@@ -31,8 +31,9 @@ def annotate_and_save_frames(frame_number, frame, detections, annotated_frames_d
         bbox = det['bounding_box']
         conf_score = det['frame_confidence']
         person_identity = det['label']
+        person_identity = person_identity if person_identity else 'Unknown'
         x_min, y_min, x_max, y_max = map(int, bbox)
-        if conf_score < 0.4:
+        if conf_score < 0.25:
             green = int((conf_score / 0.4) * 255)
             red = 255
         else:
@@ -40,11 +41,12 @@ def annotate_and_save_frames(frame_number, frame, detections, annotated_frames_d
             red = int(255 * (1 - (conf_score - 0.4) / 0.6))
         color = (0, green, red)
         cv2.rectangle(frame, (x_min, y_min), (x_max, y_max), color, 4)
-        text = f"T: {track_num}, P: {person_identity}, C: {conf_score:.2f}"
+        # text = f"T: {track_num}, P: {person_identity}, C: {conf_score:.2f}"
+        text = f"{person_identity} {'is speaking' if conf_score >= 0.3 else ''}"
         (text_width, text_height), _ = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, 1.0, 3)
         text_position = (x_min, y_min - 10 if y_min - 10 > text_height else y_min + text_height + 10)
         cv2.putText(frame, text, text_position,
-                    cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 3)
+                    cv2.FONT_HERSHEY_SIMPLEX, 1.0, color, 2)
         frame_number_text = f"Frame {frame_number:06d}"
         text_position = (10, frame.shape[0] - 10)
         cv2.putText(frame, frame_number_text, text_position,

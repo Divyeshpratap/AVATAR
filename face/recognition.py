@@ -28,7 +28,7 @@ def load_face_database(face_db_path, face_app, logger):
     logger.info(f"Face database loaded. Persons found: {list(face_database.keys())}")
     return face_database
 
-def recognize_face(embedding, face_database, threshold=0.5):
+def recognize_face(embedding, face_database, threshold=0.35):
     identity = "Unknown"
     best_score = -1.0
     for person, embeddings in face_database.items():

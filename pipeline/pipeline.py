@@ -48,7 +48,7 @@ class TrackGenerator:
         os.makedirs(self.all_frames_dir, exist_ok=True)
         os.makedirs(self.annotated_frames_dir, exist_ok=True)
 
-        self.cap = cv2.VideoCapture(1)
+        self.cap = cv2.VideoCapture(0)
         if not self.cap.isOpened():
             self.logger.error("Cannot open camera.")
             exit(1)
@@ -64,7 +64,7 @@ class TrackGenerator:
         self.face_app.prepare(ctx_id=int(args.face_app_ctx_id))
         self.face_database = load_face_database(args.registered_faces, self.face_app, self.logger)
         self.p = pyaudio.PyAudio()
-        self.stream = self.p.open(format=args.audio_format,
+        self.audio_stream = self.p.open(format=args.audio_format,
                                   channels=self.audio_channels,
                                   rate=self.audio_rate,
                                   input=True,
@@ -77,6 +77,7 @@ class TrackGenerator:
         self.processed_tracks = []
 
         self.processing_done_flag = [False]
+        self.talknet_evaluations_done = False
         self.display_thread = threading.Thread(target=display_frames, args=(self.batch_queue, self.frame_width, self.frame_height, self.processing_done_flag, self.logger), daemon=True)
         self.display_thread.start()
         self.logger.debug("Display thread started.")
@@ -156,10 +157,13 @@ class TrackGenerator:
             except queue.Empty:
                 if self.processing_done:
                     self.logger.debug("Processing thread detected done flag. Exiting.")
+                    print('***Processing thread detected done flag.***')
+                    
                     break
                 continue
             if data is None:
                 self.logger.debug("Processing thread received sentinel. Exiting.")
+                print(f'****Processing thread now received no data, hence all 1500 frames are recorded but maybe not processed completely****')
                 break
             startTimeOneBatch = datetime.now()
             frames, audio_data, start_frame_number = data
@@ -184,7 +188,8 @@ class TrackGenerator:
             for track_id in current_batch_tracked_objects:
                 track_frames_numbers = self.current_tracks[track_id]['frames'][-self.window_size:]
                 track_bboxes = self.current_tracks[track_id]['bboxes'][-self.window_size:]
-                filled_bboxes = interpolate_bboxes(track_frames_numbers, track_bboxes, start_frame_number, self.window_size, self.window_size, self.max_unrecognized_frames, self.logger)
+                # filled_bboxes = interpolate_bboxes(track_frames_numbers, track_bboxes, start_frame_number, self.window_size, self.max_unrecognized_frames, self.logger)
+                filled_bboxes = interpolate_bboxes(track_frames_numbers, track_bboxes, start_frame_number, self.window_size, self.max_unrecognized_frames, self.frame_width, self.frame_height,self.logger)
                 if filled_bboxes is not None:
                     continuous_frames = list(range(start_frame_number, start_frame_number + self.window_size))
                     for i, frame_num in enumerate(continuous_frames):
@@ -263,6 +268,7 @@ class TrackGenerator:
             start_frame_number = curr_frame_number + 1
             endTimeOneBatch = datetime.now()
             self.logger.info(f"Batch processed in {(endTimeOneBatch - startTimeOneBatch).total_seconds()} seconds.")
+        self.talknet_evaluations_done = True
 
     def run(self):
         batchNumber = 0
@@ -272,7 +278,7 @@ class TrackGenerator:
             batchNumber += 1
             audio_queue = queue.Queue()
             video_queue = queue.Queue()
-            audio_thread = threading.Thread(target=capture_audio_wrapper, args=(self.stream, self.window_size, self.audio_rate, self.video_fps, audio_queue, self.logger))
+            audio_thread = threading.Thread(target=capture_audio_wrapper, args=(self.audio_stream, self.window_size, self.audio_rate, self.video_fps, audio_queue, self.logger))
             video_thread = threading.Thread(target=capture_video_wrapper, args=(self.cap, self.window_size, batchNumber, video_queue, self.logger))
             audio_thread.start()
             video_thread.start()
@@ -306,34 +312,13 @@ class TrackGenerator:
                 self.processing_done = True
                 self.logger.info(f"Processing done as either {self.max_frames} reached or process was manually terminated")
                 time.sleep(2)
-                combined_audio_segment_path = os.path.join(self.tmp_dir, 'compiled_audio.wav')
-                try:
-                    with wave.open(combined_audio_segment_path, 'wb') as wf:
-                        wf.setnchannels(self.audio_channels)
-                        wf.setsampwidth(self.p.get_sample_size(self.args.audio_format))
-                        wf.setframerate(self.audio_rate)
-                        wf.writeframes(audioCompiled)
-                    self.logger.debug(f"Saved combined audio to {combined_audio_segment_path}.")
-                    video_output_path = os.path.join(self.tmp_dir, "annotated_video.mp4")
-                    ffmpeg_command = [
-                        "ffmpeg",
-                        "-y",
-                        "-framerate", "30",
-                        "-i", os.path.join(self.annotated_frames_dir, "annotated_frame_%06d.jpg"),
-                        "-i", combined_audio_segment_path,
-                        "-c:v", "libx264",
-                        "-c:a", "aac",
-                        "-shortest",
-                        video_output_path,
-                    ]
-                    subprocess.run(ffmpeg_command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                    self.logger.info(f"Annotated video saved to {video_output_path}.")
-                except Exception as e:
-                    self.logger.error(f"Failed to create annotated video: {e}")
+
         # if not self.batch_queue.empty():
         self.batch_queue.put(None)
+        self.processing_thread.join()
         self.processing_done_flag[0] = True
         self.display_thread.join()
+        print(f'******dispay thread has been joined*****')
         saving_track_dict = dict(self.current_tracks)
         track_info_pkl_path = os.path.join(self.tmp_dir, "trackInfo.pkl")
         track_info_txt_path = os.path.join(self.tmp_dir, "trackInfo.txt")
@@ -351,13 +336,37 @@ class TrackGenerator:
             self.logger.debug(f"Saved track info to {track_info_txt_path}.")
         except Exception as e:
             self.logger.error(f"Failed to save track info txt: {e}")
-        self.stream.stop_stream()
-        self.stream.close()
+        self.audio_stream.stop_stream()
+        self.audio_stream.close()
         self.p.terminate()
         self.logger.info("Audio stream closed.")
         self.cap.release()
         cv2.destroyAllWindows()
         self.logger.info("Video capture released. Processing finished.")
+        combined_audio_segment_path = os.path.join(self.tmp_dir, 'compiled_audio.wav')
+        try:
+            with wave.open(combined_audio_segment_path, 'wb') as wf:
+                wf.setnchannels(self.audio_channels)
+                wf.setsampwidth(self.p.get_sample_size(self.args.audio_format))
+                wf.setframerate(self.audio_rate)
+                wf.writeframes(audioCompiled)
+            self.logger.debug(f"Saved combined audio to {combined_audio_segment_path}.")
+            video_output_path = os.path.join(self.tmp_dir, "annotated_video.mp4")
+            ffmpeg_command = [
+                "ffmpeg",
+                "-y",
+                "-framerate", "30",
+                "-i", os.path.join(self.annotated_frames_dir, "annotated_frame_%06d.jpg"),
+                "-i", combined_audio_segment_path,
+                "-c:v", "libx264",
+                "-c:a", "aac",
+                "-shortest",
+                video_output_path,
+            ]
+            subprocess.run(ffmpeg_command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            self.logger.info(f"Annotated video saved to {video_output_path}.")
+        except Exception as e:
+            self.logger.error(f"Failed to create annotated video: {e}")
         # --- Compile speaking segments ---
         speaking_results = {}
         for track_id, data in self.current_tracks.items():
@@ -365,9 +374,12 @@ class TrackGenerator:
             person_id = data['label']
             if not sorted_frames:
                 continue
-            binary_scores = [1 if data['scores'][frame] >= 0.35 else 0 for frame in sorted_frames]
+            binary_scores = [1 if data['scores'][frame] >= 0.30 else 0 for frame in sorted_frames]
             segments = extract_speaking_segments(sorted_frames, binary_scores, gap_threshold=self.speaking_gap_threshold, min_segment_length=self.speaking_min_frame_length)
-            speaking_results[person_id] = segments
+            if person_id in speaking_results:
+                speaking_results[person_id] = speaking_results[person_id] + segments
+            else:
+                speaking_results[person_id] = segments
             print(f"Track: {track_id}, Person Identity: {person_id} speaking segments: {segments}")
         try:
             with open(os.path.join(self.tmp_dir, "speaking_segments.json"), "w") as f:

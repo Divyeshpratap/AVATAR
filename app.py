@@ -23,7 +23,10 @@ def index():
       <title>Speaker Detection Setup</title>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
       <style>
-          body { background-color: #f8f9fa; }
+          body { 
+            background: url("{{ url_for('static', filename='cubsBackground.jpeg') }}") no-repeat center center fixed;
+            background-size: cover;
+            }
           .container { margin-top: 50px; max-width: 700px; }
           .card { padding: 20px; margin-bottom: 20px; }
           h3 { margin-bottom: 20px; }
@@ -33,10 +36,10 @@ def index():
       <div class="container">
         <!-- New Detection Section -->
         <div class="card shadow-sm">
-          <h3>Run New Speaker Detection</h3>
+          <h3>Live Active New Speaker Detection System</h3>
           <form method="post" action="/start">
             <div class="form-group">
-              <label for="tmp_dir_new">Temporary Directory (tmp_dir):</label>
+              <label for="tmp_dir_new">Temporary Directory:</label>
               <input type="text" class="form-control" id="tmp_dir_new" name="tmp_dir" value="output/temp/" required>
             </div>
             <div class="form-group">
@@ -383,4 +386,4 @@ def serve_video():
     return send_file(video_path, mimetype="video/mp4")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=False)
+    app.run(host="0.0.0.0", port=5001, debug=False)
