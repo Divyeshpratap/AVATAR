@@ -149,11 +149,23 @@ ${ROOT}
 
 ### Usage
 
-Run the inferencing script using the below command
+Run the below script for realtime processing
 
 ```bash
-python detectSpeakers.py --tmp_dir output/<projectName>
+python camera_complete.py --tmp_dir output/<projectName>
 ```
+
+Run the below script in same sequence for offline processing
+
+```bash
+python camera_face_recognition_masking.py --outfile output/tmp/min_blur_4.mp4
+
+python offline_face_recognition_blurring_lip_sync.py --videoName min_blur --videoFolder output/tmp/offline --face_masking
+
+python audio_biometrics_nemo.py --dir output/tmp/offline/min_blur/pyavi --video_name video_out.avi
+```
+
+
 If you do not want face masking, pass the argument "--no_face_masking"
 
 (The code has been tested with the following system environment: Ubuntu 22.04.05 LTS, CUDA 12.2, cuDNN 9.7.1, Python 3.9, PyTorch 1.12.1+cu118, torchvision 0.15.2, onnxruntime-gpu 1.19.2, numpy 1.24.3, opencv 4.11.0.86)

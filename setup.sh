@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 # ---------------------------------------------------------------------------
-# Fully reproducible environment bootstrap for this project.
+# Fully reproducible environment bootstrap for AVATAR project.
 #   • Creates & activates conda env “nemoEnv” (Python 3.10.12)
 #   • Installs system-level libs with apt
 #   • Pulls CUDA-11.8 PyTorch wheels and every Python dependency
-#   • Order is **identical** to the list you supplied
 #
 # Usage (from repo root):   bash setup.sh
 # ---------------------------------------------------------------------------
@@ -67,4 +66,4 @@ pip install "git+https://github.com/NVIDIA/NeMo.git@main#egg=nemo_toolkit[asr]"
 log "Installing PySceneDetect 0.6.4…"
 pip install scenedetect==0.6.4
 
-log "🎉  All done!  Activate later with:  conda activate nemoEnv"
+log "All done!  Activate later with:  conda activate nemoEnv"
