@@ -198,13 +198,26 @@ def annotate_video(
     pad = 10
     line_h = int(30 * font_scale) + 4
     font = cv2.FONT_HERSHEY_SIMPLEX
-
+    header = "Audio Diarization and Biometrics"
     frame_idx = 0
     while True:
         ret, frame = cap.read()
         if not ret:
             break
         t = frame_idx / fps
+
+        # ─── header ──────────────────────────────────────────────
+        header_y = H - pad - line_h              # one row above first speaker
+        cv2.putText(
+            frame,
+            header,
+            (10, header_y),
+            font,
+            font_scale,
+            (0, 0, 0),
+            thick,
+            cv2.LINE_AA,
+        )
 
         for i, spk in enumerate(reversed(speakers)):
             y = H - pad - i * line_h
