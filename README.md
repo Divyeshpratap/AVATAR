@@ -5,14 +5,11 @@
 AVATAR is a near real-time active speaker detection system that streams camera feeds, tracks all faces and applies facial recongition, evaluates their lip-sync accuracy using TalkNet, and annotates the video stream in real time with the active speaker. The system uses an efficient producer-consumer pipeline to ensure simultaneous image + audio capture, lip-sync score evaluation, and live frame annotation and rendering.The system also generates speaking segments tagged to speaker identity which can be later used for video captioning. It also integrates an optional face masking feature if the person identity is not present in the database.
 ## DEMO
 <div align="center">
-  <video src="https://github.com/user-attachments/assets/f128a7c6-0c29-4907-a283-0d54183a2bd8" controls width="50%">
+  <video src="https://github.com/user-attachments/assets/2c31bf15-cdd0-4526-a702-984f51a32ff1" controls width="50%">
     Your browser does not support the video tag.
   </video>
   <p><i>Active Speaker Localization Demo</i></p>
 </div>
-
-
-https://github.com/user-attachments/assets/2c31bf15-cdd0-4526-a702-984f51a32ff1
 
 
 ## High Level System Architecture:
