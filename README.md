@@ -156,27 +156,16 @@ Run the below script for realtime processing
 python camera_complete.py --tmp_dir output/<projectName>
 ```
 
-Run the below script in same sequence for offline processing
-
-```bash
-python camera_face_recognition_masking.py --outfile output/tmp/min_blur_4.mp4
-
-python offline_face_recognition_blurring_lip_sync.py --videoName min_blur --videoFolder output/tmp/offline --face_masking
-
-python audio_biometrics_nemo.py --dir output/tmp/offline/min_blur/pyavi --video_name video_out.avi
-```
-
-
 If you do not want face masking, pass the argument "--no_face_masking"
 
 (The code has been tested with the following system environment: Ubuntu 22.04.05 LTS, CUDA 12.2, cuDNN 9.7.1, Python 3.9, PyTorch 1.12.1+cu118, torchvision 0.15.2, onnxruntime-gpu 1.19.2, numpy 1.24.3, opencv 4.11.0.86)
 
 ## License
-This repository is private and intended solely for Center for Unified Biometrics and Sensors Lab (University at Buffalo) use. Unauthorized reproduction, distribution, or commercial use of this code is prohibited.
+This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgment
 This project adopts trained ASD model from [TalkNet-ASD](https://github.com/TaoRuijie/TalkNet-ASD), face detection from [S3FD](https://github.com/sfzhang15/SFD), face recognition from [Insightface](https://github.com/deepinsight/insightface), and tracking code from [SORT](https://github.com/abewley/sort) 
 
 ## Contact
-For more information, contact the University at Buffalo.
+For more information and collabortions, reach out to [Divyesh Pratap Singh](https://www.linkedin.com/in/divyesh-pratap-singh/)
 
